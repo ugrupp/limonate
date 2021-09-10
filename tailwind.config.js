@@ -15,6 +15,8 @@ module.exports = {
     colors: {
       light: "#FFF6A7",
       dark: "#000",
+      transparent: "transparent",
+      current: "currentColor",
     },
     fontSize: {
       16: "1rem",
@@ -45,6 +47,9 @@ module.exports = {
       70: "4.375rem",
       80: "5rem",
       90: "5.625rem",
+      120: "7.5rem",
+      180: "11.25rem",
+      240: "15rem",
     },
     extend: {
       fontFamily: {
