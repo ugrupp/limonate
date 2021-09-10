@@ -1,0 +1,22 @@
+html,
+body {
+  hyphens: auto;
+  scroll-behavior: smooth;
+  @apply antialiased;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+::selection {
+  @apply bg-black text-white;
+}
+
+.selection-inverted ::selection {
+  @apply bg-white text-black;
+}
+
+address {
+  @apply block not-italic;
+}

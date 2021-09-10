@@ -1,3 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/**
+ * Tailwind's base styles and any base styles registered by plugins.
+ */
+@import "tailwindcss/base";
+
+/**
+ * Custom base styles.
+ */
+@import "./fonts.css";
+@import "./base.css";
+
+/**
+ * Tailwind's component classes and any component classes registered by plugins.
+ */
+@import "tailwindcss/components";
+
+/**
+ * Tailwind's utility classes and any utility classes registered by plugins.
+ */
+@import "tailwindcss/utilities";

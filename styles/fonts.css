@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "rzzaaa";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/Rza-Light.woff2") format("woff2"),
+    url("/fonts/Rza-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "rzzaaa";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("/fonts/Rza-Black.woff2") format("woff2"),
+    url("/fonts/Rza-Black.woff") format("woff");
+}
