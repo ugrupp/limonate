@@ -56,9 +56,11 @@ module.exports = {
         md: "768px",
         lg: "1024px",
         xl: "1280px",
-        "2xl": "1428px", // TODO: validate
-        "3xl": "1674px", // TODO: validate
-        "4xl": "1920px",
+        "2xl": "1600px",
+        "3xl": "1920px",
+      },
+      maxWidth: {
+        "8xl": `${1920 - 2 * 90}px`,
       },
     },
   },
