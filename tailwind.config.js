@@ -7,6 +7,10 @@ module.exports = {
       normal: 400,
       bold: 700,
     },
+    colors: {
+      light: "#FFF6A7",
+      dark: "#000",
+    },
     extend: {
       fontFamily: {
         sans: ["rzzaaa", "Georgia", "serif"],

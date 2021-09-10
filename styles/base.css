@@ -2,7 +2,7 @@ html,
 body {
   hyphens: auto;
   scroll-behavior: smooth;
-  @apply antialiased;
+  @apply bg-light antialiased;
 }
 
 body {
@@ -10,11 +10,11 @@ body {
 }
 
 ::selection {
-  @apply bg-black text-white;
+  @apply bg-dark text-light;
 }
 
 .selection-inverted ::selection {
-  @apply bg-white text-black;
+  @apply bg-light text-dark;
 }
 
 address {
