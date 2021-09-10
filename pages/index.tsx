@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Intro from "../components/intro";
 import data from "../data/index.json";
 
 export const getStaticProps = async () => {
@@ -23,7 +24,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section dangerouslySetInnerHTML={{ __html: data.intro }}></section>
+
+      <Intro text={data.intro} />
       <section>
         <h2>Gallery</h2>
         <div className="w-[900px] max-w-full relative">

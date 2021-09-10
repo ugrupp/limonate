@@ -1,4 +1,13 @@
 @font-face {
+  font-family: "Brut Grotesque";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/Brut_Grotesque_WEB-Regular.woff2") format("woff2"),
+    url("/fonts/Brut_Grotesque_WEB-Regular.woff") format("woff");
+}
+
+@font-face {
   font-family: "rzzaaa";
   font-style: normal;
   font-display: swap;
