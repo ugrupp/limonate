@@ -3,7 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Intro from "../components/intro";
+import About from "../components/about";
+import Menu from "../components/menu";
 import data from "../data/index.json";
 import scrollsnapStyles from "../styles/scrollsnap.module.css";
 
@@ -27,9 +28,18 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
 
       <div className={scrollsnapStyles.wrapper}>
-        <Intro text={data.intro} />
+        {/* Intro */}
+        <section className={scrollsnapStyles.section} id="start">
+          <div className="flex items-center justify-center h-screen xl:h-full">
+            <Menu />
+          </div>
+        </section>
 
-        <section className={scrollsnapStyles.section} data-anchor="#was">
+        {/* About */}
+        <About text={data.about} />
+
+        {/* Gallery */}
+        <section className={scrollsnapStyles.section} id="was">
           <h2>Gallery</h2>
           <div className="w-[900px] max-w-full relative">
             {data.gallery.map(({ image }) => (
@@ -46,6 +56,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </div>
         </section>
 
+        {/* Signet */}
         <section className={scrollsnapStyles.section}>
           <div className="flex items-center justify-center h-screen xl:h-full">
             <img
@@ -56,11 +67,13 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </div>
         </section>
 
-        <section className={scrollsnapStyles.section} data-anchor="#shop">
+        {/* Shop */}
+        <section className={scrollsnapStyles.section} id="shop">
           Shop
         </section>
 
-        <section className={scrollsnapStyles.section} data-anchor="#info">
+        {/* Info */}
+        <section className={scrollsnapStyles.section} id="info">
           <Link href="/impressum">
             <a>Impressum</a>
           </Link>

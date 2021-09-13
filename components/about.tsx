@@ -5,11 +5,11 @@ import scrollsnapStyles from "../styles/scrollsnap.module.css";
 import Container from "./container";
 import { Gradient, Sentinel } from "./scroll-gradient";
 
-interface IntroProps {
+interface AboutProps {
   text: string;
 }
 
-const Intro: React.FC<IntroProps> = ({ text }) => {
+const About: React.FC<AboutProps> = ({ text }) => {
   const { ref: topSentinelRef, inView: topSentinelInView } = useInView({
     threshold: 0,
   });
@@ -18,10 +18,7 @@ const Intro: React.FC<IntroProps> = ({ text }) => {
   });
 
   return (
-    <section
-      className={`${scrollsnapStyles.section} relative`}
-      data-anchor="#wer"
-    >
+    <section className={`${scrollsnapStyles.section} relative`} id="wer">
       <div className={scrollsnapStyles.scroller}>
         {/* Content */}
         <div className="relative">
@@ -59,4 +56,4 @@ const Intro: React.FC<IntroProps> = ({ text }) => {
   );
 };
 
-export default Intro;
+export default About;
