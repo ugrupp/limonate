@@ -16,3 +16,7 @@ body {
 address {
   @apply block not-italic;
 }
+
+.swiper-button-disabled {
+  cursor: not-allowed;
+}

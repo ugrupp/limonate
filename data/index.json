@@ -4,9 +4,70 @@
     {
       "image": {
         "src": "/images/Limonate_1.jpg",
+        "previewSrc": "images/sm/Limonate_1.jpg",
         "width": 1500,
         "height": 1875,
-        "objectPosition": "10% 10%",
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_2.jpg",
+        "previewSrc": "images/sm/Limonate_2.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_3.jpg",
+        "previewSrc": "images/sm/Limonate_3.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_4.jpg",
+        "previewSrc": "images/sm/Limonate_4.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_5.jpg",
+        "previewSrc": "images/sm/Limonate_5.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_6.jpg",
+        "previewSrc": "images/sm/Limonate_6.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
+        "alt": "Alt-Text"
+      }
+    },
+    {
+      "image": {
+        "src": "/images/Limonate_7.jpg",
+        "previewSrc": "images/sm/Limonate_7.jpg",
+        "width": 1500,
+        "height": 1875,
+        "objectPosition": "50% 50%",
         "alt": "Alt-Text"
       }
     }
