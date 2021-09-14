@@ -63,6 +63,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
       {/* Slider */}
       <Swiper
         loop={false}
+        speed={1000}
         lazy={{
           checkInView: true,
           loadPrevNext: true,

@@ -1,0 +1,7 @@
+.root {
+  @apply grid grid-cols-2 gap-y-24 md:gap-y-40;
+
+  @screen xl {
+    grid-template-columns: 3fr 1fr 1fr;
+  }
+}

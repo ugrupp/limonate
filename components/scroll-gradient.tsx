@@ -20,7 +20,7 @@ const Gradient: React.FC<GradientProps> = ({
 }) => (
   <div
     className={classNames([
-      "pointer-events-none sticky inset-x-0 z-10 transition-opacity duration-100",
+      "pointer-events-none sticky inset-x-0 z-10 transition-opacity duration-300",
       dimensions,
       classes,
       {
