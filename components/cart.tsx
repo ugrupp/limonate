@@ -47,7 +47,7 @@ const Cart: React.FC<CartProps> = () => {
             color="dark"
             classes="rounded-t-[15px]"
           />
-          <div className="p-15 md:p-40 2xl:p-60 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow">
+          <div className="p-15 md:p-40 2xl:p-60 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow relative z-0">
             <div className="text-23 md:text-35 2xl:text-50 leading-none uppercase">
               {/* Product list head */}
               <div className="hidden md:block md:mb-40 2xl:mb-60">
@@ -76,9 +76,8 @@ const Cart: React.FC<CartProps> = () => {
                     <strong>Gesamt {subtotalPrice}</strong>
                   </p>
 
-                  {/* TODO: dynamic? */}
                   <p className="mt-10 md:mt-16 xl:mt-10 2xl:mt-24 text-10 md:text-12 xl:text-20 2xl:text-25">
-                    zzgl. 5 EUR Versand
+                    zzgl. Versand
                   </p>
                 </div>
               )}
