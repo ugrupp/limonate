@@ -26,8 +26,8 @@ const Gradient: React.FC<GradientProps> = ({
       {
         "hidden xl:block": mobileHidden,
         "opacity-0": visible,
-        "from-light via-light to-transparent": color === "light",
-        "from-dark via-dark to-transparent": color === "dark",
+        "from-light via-light": color === "light",
+        "from-dark via-dark": color === "dark",
         "bg-gradient-to-b top-0": position === "top",
         "bg-gradient-to-t bottom-0": position === "bottom",
       },
