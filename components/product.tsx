@@ -37,12 +37,15 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
   const [selectedVariant, setSelectedVariant] = useState<string | number>(
     product?.variants?.[0]?.id ?? ""
   );
-  const [cart, checkout] = useCart();
+  const [cart, checkout, isOpen, setIsOpen] = useCart();
   const handleBuyButtonClick = async () => {
     await checkout.addItem({
       variantId: selectedVariant,
       quantity: 1,
     });
+
+    // open cart
+    setIsOpen(true);
   };
 
   return (

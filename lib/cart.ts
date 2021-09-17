@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { Cart, LineItemToAdd } from "shopify-buy";
 import { CartContext } from "../state/CartProvider";
 import { LoadingContext } from "../state/LoadingProvider";
@@ -10,9 +10,14 @@ export type Checkout = {
   removeItem: (lineItemId: string) => Promise<void>;
 };
 
-const useCart = (): [Cart | null, Checkout] => {
+const useCart = (): [
+  Cart | null,
+  Checkout,
+  boolean,
+  Dispatch<SetStateAction<boolean>>
+] => {
   const [_, setLoading] = useContext(LoadingContext);
-  const [cart, setCart] = useContext(CartContext);
+  const [cart, setCart, isOpen, setIsOpen] = useContext(CartContext);
 
   const checkoutId = cart?.id;
 
@@ -65,7 +70,7 @@ const useCart = (): [Cart | null, Checkout] => {
     removeItem,
   };
 
-  return [cart, checkout];
+  return [cart, checkout, isOpen, setIsOpen];
 };
 
 export default useCart;

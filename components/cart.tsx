@@ -12,7 +12,7 @@ import { Gradient, Sentinel } from "./scroll-gradient";
 interface CartProps {}
 
 const Cart: React.FC<CartProps> = () => {
-  const [cart] = useCart();
+  const [cart, setCart, isOpen, setIsOpen] = useCart();
 
   // Scroll
   const intersectionRoot = useRef<HTMLDivElement>(null);
@@ -34,7 +34,7 @@ const Cart: React.FC<CartProps> = () => {
   );
 
   return (
-    <Overlay>
+    <Overlay isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="overflow-auto h-full">
         <div className="relative min-h-full flex flex-col">
           {/* Scroll gradient & sentinel */}
