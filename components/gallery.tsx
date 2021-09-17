@@ -64,11 +64,6 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
       <Swiper
         loop={false}
         speed={1000}
-        lazy={{
-          checkInView: true,
-          loadPrevNext: true,
-          loadPrevNextAmount: 2,
-        }}
         modules={[Navigation]}
         onAfterInit={(swiper) => {
           setSwiper(swiper);
@@ -94,6 +89,8 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
                 alt={image.alt}
                 objectFit="cover"
                 objectPosition={image.objectPosition}
+                loading="lazy"
+                lazyBoundary="0px 100% 0px 0px" // TODO: Not working...
               />
             </div>
           </SwiperSlide>
