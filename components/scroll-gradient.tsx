@@ -53,5 +53,6 @@ const Sentinel = React.forwardRef<HTMLDivElement, SentinelProps>(
     />
   )
 );
+Sentinel.displayName = "Sentinel";
 
 export { Gradient, Sentinel };
