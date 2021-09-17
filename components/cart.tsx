@@ -4,6 +4,7 @@ import shopData from "../data/shop.json";
 import useCart from "../lib/cart";
 import { formatCurrency } from "../lib/helpers";
 import cartStyles from "../styles/cart.module.css";
+import Button from "./button";
 import CartItem from "./cart-item";
 import Overlay from "./overlay";
 import { Gradient, Sentinel } from "./scroll-gradient";
@@ -86,13 +87,14 @@ const Cart: React.FC<CartProps> = () => {
             {/* Bottom actions */}
             <div className="mt-auto flex flex-col gap-y-12 gap-x-20 md:flex-row items-start md:items-end">
               {/* Pay button */}
-              <a
+              <Button
                 target="_blank"
                 href={cart.webUrl}
                 className="md:order-2 md:ml-auto"
+                theme="light"
               >
                 Bezahlen
-              </a>
+              </Button>
 
               {/* Disclaimer text */}
               {shopData.disclaimerText && (

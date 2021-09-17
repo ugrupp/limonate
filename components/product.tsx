@@ -8,6 +8,7 @@ import useCart from "../lib/cart";
 import { formatCurrency, formatUnitPrice } from "../lib/helpers";
 import richtextStyles from "../styles/richtext.module.css";
 import scrollsnapStyles from "../styles/scrollsnap.module.css";
+import Button, { buttonStyles } from "./button";
 import Container from "./container";
 import ProductSwiper from "./product-swiper";
 import { Gradient, Sentinel } from "./scroll-gradient";
@@ -107,9 +108,19 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
           {/* Bottom */}
           <div>
             {/* Actions */}
-            <div>
+            <div className="mb-12 md:mb-15 2xl:mb-18">
+              <Button tagName="button">Zutaten &amp; Nährwerte</Button>
+            </div>
+
+            <div className="flex flex-col md:flex-row flex-wrap gap-12 md:gap-15 2xl:gap-18 items-start">
               {/* Variant selection */}
-              <select onChange={(e) => setSelectedVariant(e.target.value)}>
+              <select
+                className={`w-full max-w-[fit-content] overflow-ellipsis block appearance-none disabled:opacity-100 disabled:pointer-events-none ${buttonStyles(
+                  "dark"
+                )}`}
+                disabled={product.variants.length <= 1}
+                onChange={(e) => setSelectedVariant(e.target.value)}
+              >
                 {product.variants.map(
                   ({
                     id,
@@ -145,9 +156,13 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
               </select>
 
               {/* Buy button */}
-              <button onClick={handleBuyButtonClick} disabled={!cart}>
+              <Button
+                tagName="button"
+                onClick={handleBuyButtonClick}
+                disabled={!cart}
+              >
                 Kaufen
-              </button>
+              </Button>
             </div>
 
             {/* Disclaimer text */}
