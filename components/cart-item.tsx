@@ -1,7 +1,7 @@
 import Image from "next/image";
 import shopData from "../data/shop.json";
-import useCart from "../lib/cart";
-import { formatCurrency, formatUnitPrice } from "../lib/helpers";
+import useCart from "../lib/useCart";
+import { formatCurrency, formatUnitPrice } from "../lib/util";
 import cartStyles from "../styles/cart.module.css";
 
 interface CartItemProps {

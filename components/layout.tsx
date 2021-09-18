@@ -1,13 +1,15 @@
 import classNames from "classnames";
-import React, { useContext } from "react";
-import { LoadingContext } from "../state/LoadingProvider";
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { loadingState } from "../lib/state";
 import Cart from "./cart";
+import OverlayMenu from "./overlay-menu";
 import Topbar from "./topbar";
 
 interface LayoutProps {}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [loading] = useContext(LoadingContext);
+  const loading = useRecoilValue(loadingState);
 
   return (
     <div
@@ -16,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       })}
     >
       <Cart />
+      <OverlayMenu />
 
       <Topbar />
 

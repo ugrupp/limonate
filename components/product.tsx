@@ -1,11 +1,12 @@
 import classNames from "classnames";
-import Image from "next/image";
 import React, { useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useSetRecoilState } from "recoil";
 import Client from "shopify-buy";
 import data from "../data/shop.json";
-import useCart from "../lib/cart";
-import { formatCurrency, formatUnitPrice } from "../lib/helpers";
+import { cartOpenState } from "../lib/state";
+import useCart from "../lib/useCart";
+import { formatCurrency, formatUnitPrice } from "../lib/util";
 import richtextStyles from "../styles/richtext.module.css";
 import scrollsnapStyles from "../styles/scrollsnap.module.css";
 import Button, { buttonStyles } from "./button";
@@ -37,7 +38,8 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
   const [selectedVariant, setSelectedVariant] = useState<string | number>(
     product?.variants?.[0]?.id ?? ""
   );
-  const [cart, checkout, isOpen, setIsOpen] = useCart();
+  const [cart, checkout] = useCart();
+  const setCartOpen = useSetRecoilState(cartOpenState);
   const handleBuyButtonClick = async () => {
     await checkout.addItem({
       variantId: selectedVariant,
@@ -45,7 +47,7 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
     });
 
     // open cart
-    setIsOpen(true);
+    setCartOpen(true);
   };
 
   return (

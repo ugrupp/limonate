@@ -1,8 +1,10 @@
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useInView } from "react-intersection-observer";
-import useCart from "../lib/cart";
+import { useSetRecoilState } from "recoil";
+import { cartOpenState, menuOpenState } from "../lib/state";
 import useBoop from "../lib/useBoop";
+import useCart from "../lib/useCart";
 import Container from "./container";
 import Dot from "./dot";
 
@@ -13,7 +15,8 @@ const Topbar: React.FC<TopbarProps> = () => {
   const { ref: topSentinelRef, inView: topSentinelInView } = useInView();
 
   // Cart
-  const [cart, checkout, isOpen, setCartOpen] = useCart();
+  const [cart] = useCart();
+  const setCartOpen = useSetRecoilState(cartOpenState);
 
   const openCartButtonHandler = () => {
     setCartOpen(true);
@@ -32,8 +35,11 @@ const Topbar: React.FC<TopbarProps> = () => {
   ] = useBoop({
     scale: 1.15,
   });
+  const setMenuOpen = useSetRecoilState(menuOpenState);
 
-  const menuOpenerButtonHandler = () => {};
+  const menuOpenerButtonHandler = () => {
+    setMenuOpen(true);
+  };
 
   return (
     <>

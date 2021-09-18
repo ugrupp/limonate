@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useSetRecoilState } from "recoil";
 import { Cart, LineItemToAdd } from "shopify-buy";
-import { CartContext } from "../state/CartProvider";
-import { LoadingContext } from "../state/LoadingProvider";
 import client from "./client";
+import { cartState, loadingState } from "./state";
+import { useLoadableState } from "./useLoadable";
 
 export type Checkout = {
   addItem: (item: LineItemToAdd) => Promise<void>;
@@ -10,14 +10,14 @@ export type Checkout = {
   removeItem: (lineItemId: string) => Promise<void>;
 };
 
-const useCart = (): [
-  Cart | null,
-  Checkout,
-  boolean,
-  Dispatch<SetStateAction<boolean>>
-] => {
-  const [_, setLoading] = useContext(LoadingContext);
-  const [cart, setCart, isOpen, setIsOpen] = useContext(CartContext);
+const useCart = (): [Cart | null, Checkout] => {
+  const setLoading = useSetRecoilState(loadingState);
+  const {
+    error,
+    loading,
+    result: cart,
+    setterOrUpdater: setCart,
+  } = useLoadableState(cartState);
 
   const checkoutId = cart?.id;
 
@@ -70,7 +70,7 @@ const useCart = (): [
     removeItem,
   };
 
-  return [cart, checkout, isOpen, setIsOpen];
+  return [cart, checkout];
 };
 
 export default useCart;

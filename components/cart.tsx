@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import { useInView } from "react-intersection-observer";
+import { useRecoilState } from "recoil";
 import shopData from "../data/shop.json";
-import useCart from "../lib/cart";
-import { formatCurrency } from "../lib/helpers";
+import { cartOpenState } from "../lib/state";
+import useCart from "../lib/useCart";
+import { formatCurrency } from "../lib/util";
 import cartStyles from "../styles/cart.module.css";
 import Button from "./button";
 import CartItem from "./cart-item";
@@ -12,7 +14,8 @@ import { Gradient, Sentinel } from "./scroll-gradient";
 interface CartProps {}
 
 const Cart: React.FC<CartProps> = () => {
-  const [cart, setCart, isOpen, setIsOpen] = useCart();
+  const [cart] = useCart();
+  const [isOpen, setIsOpen] = useRecoilState(cartOpenState);
 
   // Scroll
   const intersectionRoot = useRef<HTMLDivElement>(null);
