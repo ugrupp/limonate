@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import throttle from "lodash.throttle";
 import {
   Bodies,
@@ -12,11 +13,11 @@ import {
   Runner,
   Vertices,
 } from "matter-js";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { menuOpenState } from "../lib/state";
 
-const Menu = () => {
+const Menu = ({ withIntro = false }) => {
   const setMenuOpen = useSetRecoilState(menuOpenState);
 
   const menuItems = [
@@ -66,6 +67,10 @@ const Menu = () => {
     },
   ];
 
+  const [startMenuAnimation, setStartMenuAnimation] = useState(false);
+  const [startIntroAnimation, setStartIntroAnimation] = useState(false);
+  const introAnimationDelay = 1500;
+
   const scene = useRef(null);
   const [engine, setEngine] = useState(null);
   const [runner, setRunner] = useState(null);
@@ -73,188 +78,180 @@ const Menu = () => {
   let mouseConstraint = null;
 
   const setupScene = () => {
-    if (scene.current) {
+    if (scene.current && engine && runner) {
       const width = scene.current.offsetWidth;
       const height = scene.current.offsetHeight;
 
-      setEngine(Engine.create());
-      setRunner(Runner.create());
+      // set up renderer
+      render = Render.create({
+        element: scene.current,
+        engine: engine,
+        options: {
+          width,
+          height,
+          wireframes: false,
+          background: "transparent",
+          showBounds: false,
+        },
+      });
 
-      if (engine && runner) {
-        // set up renderer
-        render = Render.create({
-          element: scene.current,
-          engine: engine,
-          options: {
-            width,
-            height,
-            wireframes: false,
-            background: "transparent",
-            showBounds: false,
-          },
-        });
+      Runner.run(runner, engine);
+      Render.run(render);
 
-        Render.run(render);
-        Runner.run(runner, engine);
+      // Create menu items
+      const targetWidthFactor = window.matchMedia("(min-width: 1024px)").matches
+        ? 0.3
+        : 0.48;
+      const targetWidth = width * targetWidthFactor;
+      const textureWidth = 601;
+      const textureHeight = 294;
+      const yCentreOffset = 0.7;
 
-        // Create menu items
-        const targetWidthFactor = window.matchMedia("(min-width: 1024px)")
-          .matches
-          ? 0.3
-          : 0.48;
-        const targetWidth = width * targetWidthFactor;
-        const textureWidth = 601;
-        const textureHeight = 294;
-        const yCentreOffset = 0.7;
+      const textureShrink = 0.96;
 
-        const textureShrink = 0.96;
+      // Render each menu item using menu shape body with custom texture
+      const menuItemBodies = menuItems.map(function ({
+        texture,
+        href,
+        position,
+        angle,
+        bodyOptions,
+      }) {
+        const xPos = position.x * width;
+        const yPos = position.y * height;
 
-        // Render each menu item using menu shape body with custom texture
-        const menuItemBodies = menuItems.map(function ({
-          texture,
-          href,
-          position,
-          angle,
-          bodyOptions,
-        }) {
-          const xPos = position.x * width;
-          const yPos = position.y * height;
-
-          const body = Bodies.rectangle(
-            xPos,
-            yPos,
-            targetWidth,
-            targetWidth / 2,
-            {
-              density: 0.6,
-              friction: 0.45,
-              restitution: 0.425,
-              chamfer: {
-                radius: [0, 0, targetWidth / 2 - 1, targetWidth / 2 - 1],
-                quality: 10,
-              },
-              render: {
-                sprite: {
-                  texture,
-                  xScale: (targetWidth / textureWidth) * textureShrink,
-                  yScale:
-                    (targetWidth / textureHeight) *
-                    (textureHeight / textureWidth) *
-                    textureShrink,
-                  yOffset: 1 - yCentreOffset,
-                },
-              },
-              ...bodyOptions,
-            }
-          );
-
-          const oldCentre = Vertices.centre(body.vertices);
-          const newYCentre =
-            body.bounds.min.y +
-            (body.bounds.max.y - body.bounds.min.y) * yCentreOffset;
-          Body.setCentre(
-            body,
-            {
-              x: oldCentre.x,
-              y: newYCentre,
+        const body = Bodies.rectangle(
+          xPos,
+          yPos,
+          targetWidth,
+          targetWidth / 2,
+          {
+            density: 0.6,
+            friction: 0.45,
+            restitution: 0.425,
+            chamfer: {
+              radius: [0, 0, targetWidth / 2 - 1, targetWidth / 2 - 1],
+              quality: 10,
             },
-            false
-          );
-          Body.rotate(body, angle);
-          Body.setAngularVelocity(body, 0.01 * (angle <= 0 ? -1 : 1));
+            render: {
+              sprite: {
+                texture,
+                xScale: (targetWidth / textureWidth) * textureShrink,
+                yScale:
+                  (targetWidth / textureHeight) *
+                  (textureHeight / textureWidth) *
+                  textureShrink,
+                yOffset: 1 - yCentreOffset,
+              },
+            },
+            ...bodyOptions,
+          }
+        );
 
-          Body.set(body, "href", href);
-
-          Composite.add(engine.world, body);
-
-          return body;
-        });
-
-        // boundaries
-        const wallOptions = {
-          isStatic: true,
-          render: {
-            visible: false,
+        const oldCentre = Vertices.centre(body.vertices);
+        const newYCentre =
+          body.bounds.min.y +
+          (body.bounds.max.y - body.bounds.min.y) * yCentreOffset;
+        Body.setCentre(
+          body,
+          {
+            x: oldCentre.x,
+            y: newYCentre,
           },
-        };
-        const wallThickness = 500;
-        Composite.add(engine.world, [
-          Bodies.rectangle(
-            -wallThickness / 2,
-            height / 2,
-            wallThickness,
-            height,
-            wallOptions
-          ),
-          Bodies.rectangle(
-            width / 2,
-            height + wallThickness / 2,
-            width,
-            wallThickness,
-            wallOptions
-          ),
-          Bodies.rectangle(
-            width + wallThickness / 2,
-            height / 2,
-            wallThickness,
-            height,
-            wallOptions
-          ),
-        ]);
+          false
+        );
+        Body.rotate(body, angle);
+        Body.setAngularVelocity(body, 0.01 * (angle <= 0 ? -1 : 1));
 
-        const mouse = Mouse.create(render.canvas);
-        mouseConstraint = MouseConstraint.create(engine, {
-          mouse,
-        });
+        Body.set(body, "href", href);
 
-        // keep the mouse in sync with rendering
-        render.mouse = mouse;
+        Composite.add(engine.world, body);
 
-        // Follow body links
-        const mouseHandler = ({ mouse, source }) => {
-          const hoveredBodies = Query.point(menuItemBodies, mouse.position);
-          if (hoveredBodies.length) {
-            const href = hoveredBodies[0]?.href;
-            if (href) {
-              if (document.location.pathname !== "/") {
-                window.location = href;
-              } else {
-                setMenuOpen(false);
+        return body;
+      });
 
-                document
-                  .getElementById(href.replace("/#", ""))
-                  ?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-              }
+      // boundaries
+      const wallOptions = {
+        isStatic: true,
+        render: {
+          visible: false,
+        },
+      };
+      const wallThickness = 500;
+      Composite.add(engine.world, [
+        Bodies.rectangle(
+          -wallThickness / 2,
+          height / 2,
+          wallThickness,
+          height,
+          wallOptions
+        ),
+        Bodies.rectangle(
+          width / 2,
+          height + wallThickness / 2,
+          width,
+          wallThickness,
+          wallOptions
+        ),
+        Bodies.rectangle(
+          width + wallThickness / 2,
+          height / 2,
+          wallThickness,
+          height,
+          wallOptions
+        ),
+      ]);
+
+      const mouse = Mouse.create(render.canvas);
+      mouseConstraint = MouseConstraint.create(engine, {
+        mouse,
+      });
+
+      // keep the mouse in sync with rendering
+      render.mouse = mouse;
+
+      // Follow body links
+      const mouseHandler = ({ mouse, source }) => {
+        const hoveredBodies = Query.point(menuItemBodies, mouse.position);
+        if (hoveredBodies.length) {
+          const href = hoveredBodies[0]?.href;
+          if (href) {
+            if (document.location.pathname !== "/") {
+              window.location = href;
+            } else {
+              setMenuOpen(false);
+
+              document.getElementById(href.replace("/#", ""))?.scrollIntoView({
+                behavior: "smooth",
+              });
             }
           }
-        };
+        }
+      };
 
-        Events.on(mouseConstraint, "mouseup", mouseHandler);
+      Events.on(mouseConstraint, "mouseup", mouseHandler);
 
-        // Change cursor on body hover
-        Events.on(mouseConstraint, "mousemove", function ({ mouse }) {
-          render?.canvas?.classList.toggle(
-            "cursor-pointer",
-            Query.point(menuItemBodies, mouse.position).length
-          );
-        });
+      // Change cursor on body hover
+      Events.on(mouseConstraint, "mousemove", function ({ mouse }) {
+        render?.canvas?.classList.toggle(
+          "cursor-pointer",
+          Query.point(menuItemBodies, mouse.position).length
+        );
+      });
 
-        // Allow for native scrolling and clear other listeners
-        mouseConstraint.mouse.element.removeEventListener(
-          "mousewheel",
-          mouseConstraint.mouse.mousewheel
-        );
-        mouseConstraint.mouse.element.removeEventListener(
-          "DOMMouseScroll",
-          mouseConstraint.mouse.mousewheel
-        );
-        mouseConstraint.mouse.element.removeEventListener(
-          "touchmove",
-          mouseConstraint.mouse.mousemove
-        );
-      }
+      // Allow for native scrolling and clear other listeners
+      mouseConstraint.mouse.element.removeEventListener(
+        "mousewheel",
+        mouseConstraint.mouse.mousewheel
+      );
+      mouseConstraint.mouse.element.removeEventListener(
+        "DOMMouseScroll",
+        mouseConstraint.mouse.mousewheel
+      );
+      mouseConstraint.mouse.element.removeEventListener(
+        "touchmove",
+        mouseConstraint.mouse.mousemove
+      );
     }
   };
 
@@ -272,32 +269,80 @@ const Menu = () => {
     }
   };
 
+  // Handle scene start timing
   useEffect(() => {
-    // Set up scene initially
-    setupScene();
+    // With intro -> start intro timeline
+    if (withIntro) {
+      setTimeout(() => {
+        setStartIntroAnimation(true);
+      }, introAnimationDelay);
+    } else {
+      // No intro -> start animation immediately
+      setStartMenuAnimation(true);
+    }
+  }, []);
 
-    // Clear and re-setup scene on resize
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        window.requestAnimationFrame(() => {
-          if (scene.current) {
-            clearScene();
-            setupScene();
-          }
-        });
-      }, 200)
-    );
+  // Create matter base objects on menu animation start
+  useEffect(() => {
+    if (startMenuAnimation) {
+      setEngine(Engine.create());
+      setRunner(Runner.create());
+    }
+  }, [startMenuAnimation]);
+
+  // Start scene
+  useEffect(() => {
+    if (startMenuAnimation && scene.current && runner && engine) {
+      setupScene();
+
+      // Clear and re-setup scene on resize
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          window.requestAnimationFrame(() => {
+            if (scene.current) {
+              clearScene();
+              setupScene();
+            }
+          });
+        }, 200)
+      );
+    }
 
     // unmount
     return () => {
       clearScene();
     };
-  }, [scene.current]);
+  }, [startMenuAnimation, scene.current, runner, engine]);
 
   return (
     <div className="w-full h-full overflow-hidden">
-      <nav ref={scene} className="h-full w-full" />
+      {/* Intro logo */}
+      {withIntro && (
+        <Transition
+          show={!startIntroAnimation}
+          beforeLeave={() => {
+            setStartMenuAnimation(true);
+          }}
+          appear={true}
+          enter="transition-opacity linear duration-1000"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity linear duration-[2s]"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+          as={Fragment}
+        >
+          <img
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full w-[200px] md:w-[300px] xl:w-[320px] 2xl:w-[400px]"
+            src="/images/limonate-logo.svg"
+            alt="Limonate"
+          />
+        </Transition>
+      )}
+
+      {/* Menu */}
+      <nav ref={scene} className="relative z-10 h-full w-full" />
     </div>
   );
 };

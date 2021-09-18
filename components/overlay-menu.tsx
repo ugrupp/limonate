@@ -41,7 +41,7 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
         <div className="absolute inset-0">
           {/* Closer */}
           <Container>
-            <div className="relative">
+            <div className="relative z-20">
               <div className="absolute right-0 top-15 md:top-20 2xl:top-30">
                 <Dot
                   text="Menü schließen"

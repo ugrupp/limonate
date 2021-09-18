@@ -40,7 +40,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         {/* Intro */}
         <section className={scrollsnapStyles.section} id="start">
           <div className="flex items-center justify-center h-screen xl:h-full">
-            <Menu />
+            <Menu withIntro={true} />
           </div>
         </section>
 
