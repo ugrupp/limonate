@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { LoadingContext } from "../state/LoadingProvider";
 import Cart from "./cart";
+import Topbar from "./topbar";
 
 interface LayoutProps {}
 
@@ -15,6 +16,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       })}
     >
       <Cart />
+
+      <Topbar />
 
       <main>{children}</main>
     </div>
