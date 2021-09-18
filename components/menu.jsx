@@ -316,7 +316,7 @@ const Menu = ({ withIntro = false }) => {
   }, [startMenuAnimation, scene.current, runner, engine]);
 
   return (
-    <div className="w-full h-full overflow-hidden">
+    <div className="w-full h-full overflow-hidden relative">
       {/* Intro logo */}
       {withIntro && (
         <Transition
