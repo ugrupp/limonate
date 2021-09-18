@@ -13,8 +13,12 @@ import {
   Vertices,
 } from "matter-js";
 import React, { useEffect, useRef, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { menuOpenState } from "../lib/state";
 
 const Menu = () => {
+  const setMenuOpen = useSetRecoilState(menuOpenState);
+
   const menuItems = [
     {
       text: "Wer?",
@@ -215,6 +219,8 @@ const Menu = () => {
               if (document.location.pathname !== "/") {
                 window.location = href;
               } else {
+                setMenuOpen(false);
+
                 document
                   .getElementById(href.replace("/#", ""))
                   ?.scrollIntoView({
@@ -291,7 +297,7 @@ const Menu = () => {
 
   return (
     <div className="w-full h-full overflow-hidden">
-      <nav ref={scene} id="menu" className="h-full w-full" />
+      <nav ref={scene} className="h-full w-full" />
     </div>
   );
 };

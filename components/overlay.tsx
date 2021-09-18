@@ -8,23 +8,35 @@ interface OverlayProps {
 
 const Overlay: React.FC<OverlayProps> = ({ children, isOpen, setIsOpen }) => {
   return (
-    <Transition
-      as={Fragment}
-      show={isOpen}
-      enter="transition duration-300 ease-out"
-      enterFrom="transform scale-95 opacity-0"
-      enterTo="transform scale-100 opacity-100"
-      leave="transition duration-200 ease-out"
-      leaveFrom="transform scale-100 opacity-100"
-      leaveTo="transform scale-95 opacity-0"
-    >
+    <Transition show={isOpen}>
       <Dialog onClose={() => setIsOpen(false)} className="fixed z-40 inset-0">
-        <Dialog.Overlay className="fixed inset-0 bg-light" />
+        {/* Background */}
+        <Transition.Child
+          enter="transition duration-300 ease-out"
+          enterFrom="transform opacity-0"
+          enterTo="transform opacity-100"
+          leave="transition duration-200 ease-out"
+          leaveFrom="transform opacity-100"
+          leaveTo="transform opacity-0"
+          as={Fragment}
+        >
+          <Dialog.Overlay className="fixed inset-0 bg-light" />
+        </Transition.Child>
 
-        {/* TODO: validate etc */}
-        <div className="absolute inset-15 md:inset-40 2xl:inset-60 bg-dark rounded-[15px] selection-inverted text-light">
-          {children}
-        </div>
+        {/* Content */}
+        <Transition.Child
+          enter="transition duration-300 ease-out"
+          enterFrom="transform scale-95 opacity-0"
+          enterTo="transform scale-100 opacity-100"
+          leave="transition duration-200 ease-out"
+          leaveFrom="transform scale-100 opacity-100"
+          leaveTo="transform scale-95 opacity-0"
+          as={Fragment}
+        >
+          <div className="absolute inset-15 md:inset-40 2xl:inset-60 bg-dark rounded-[15px] selection-inverted text-light">
+            {children}
+          </div>
+        </Transition.Child>
       </Dialog>
     </Transition>
   );

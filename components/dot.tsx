@@ -10,7 +10,7 @@ const Dot: React.FC<DotProps> = ({ text, theme, ...otherProps }) => {
   return (
     <motion.button
       className={classNames([
-        "h-15 w-15 md:w-20 md:h-20 2xl:w-30 2xl:h-30 rounded-full",
+        "block h-15 w-15 md:w-20 md:h-20 2xl:w-30 2xl:h-30 rounded-full",
         "focus:outline-none",
         {
           "bg-light focus-visible:outline-white": theme === "light",
