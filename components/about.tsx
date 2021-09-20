@@ -47,7 +47,7 @@ const About: React.FC<AboutProps> = ({ text }) => {
           <Gradient
             position="bottom"
             visible={bottomSentinelInView}
-            dimensions="h-120 -mb-120"
+            dimensions="h-120 -mt-120"
           />
           <Sentinel position="bottom" ref={bottomSentinelRef} />
         </div>

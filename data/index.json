@@ -71,5 +71,47 @@
         "alt": "Limonate"
       }
     }
-  ]
+  ],
+  "info": {
+    "text": "<p>Für weitere Informationen oder bei Interesse an einer Zusammenarbeit senden wir Ihnen gerne eine Auflistung mit unseren Angeboten für Geschäftskunden zu.</p>",
+    "address": "<address>Hohenzollernstrasse 4 • 79106 Freiburg • <a href='mailto:post@limonate.limo'>post@limonate.limo</a></address>",
+    "links": [
+      {
+        "text": "Impressum",
+        "href": "/impressum",
+        "target": null
+      },
+      {
+        "text": "Datenschutz",
+        "href": "/datenschutz",
+        "target": null
+      },
+      {
+        "text": "Instagram",
+        "href": "https://www.instagram.com/limonate.limo/",
+        "target": "_blank"
+      },
+      {
+        "text": "Store Locator",
+        "href": "#",
+        "target": "_blank"
+      },
+      {
+        "text": "AGB",
+        "href": "/agb",
+        "target": null
+      },
+      {
+        "text": "Widerrufsbelehrung",
+        "href": "/widerrufsbelehrung",
+        "target": null
+      },
+      {
+        "text": "Zahlung, Versand & Lieferung",
+        "href": "/zahlung-versand-lieferung",
+        "target": null
+      }
+    ],
+    "imprintLine": "© 2021 All rights reserved."
+  }
 }

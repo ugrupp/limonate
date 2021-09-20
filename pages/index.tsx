@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import About from "../components/about";
 import Gallery from "../components/gallery";
+import Info from "../components/info";
 import Menu from "../components/menu";
 import Shop from "../components/shop";
 import data from "../data/index.json";
@@ -65,11 +66,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Shop data={shopData} products={products} />
 
         {/* Info */}
-        <section className={scrollsnapStyles.section} id="info">
-          <Link href="/impressum">
-            <a>Impressum</a>
-          </Link>
-        </section>
+        <Info data={data.info} />
       </div>
     </>
   );

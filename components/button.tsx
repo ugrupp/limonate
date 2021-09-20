@@ -1,9 +1,11 @@
 import classNames from "classnames";
+import React from "react";
 
 interface ButtonProps {
   tagName?: keyof JSX.IntrinsicElements;
   className?: string;
   theme?: "light" | "dark";
+  ref?: React.ForwardedRef<any>;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -11,18 +13,27 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   theme = "dark",
   tagName = "a",
+  ref,
   ...otherProps
 }) => {
   const Tag = tagName as keyof JSX.IntrinsicElements;
 
   return (
-    <Tag className={`${className} ${buttonStyles(theme)}`} {...otherProps}>
+    <Tag
+      className={`${className} ${buttonStyles(theme)}`}
+      ref={ref}
+      {...otherProps}
+    >
       <span>{children}</span>
     </Tag>
   );
 };
 
 export default Button;
+
+export const ButtonFwdRef = React.forwardRef((props, ref) => (
+  <Button {...props} ref={ref} />
+));
 
 export const buttonStyles = (theme: ButtonProps["theme"]) =>
   classNames([
