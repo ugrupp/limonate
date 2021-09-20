@@ -39,7 +39,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
 
   return (
     <section
-      className={`${scrollsnapStyles.section} h-screen relative`}
+      className={`${scrollsnapStyles.section} h-[450px] md:h-screen relative`}
       id="was"
     >
       {/* Navigation */}

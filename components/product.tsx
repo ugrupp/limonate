@@ -63,7 +63,7 @@ const Product: React.FC<ProductProps> = ({ product, first, last, data }) => {
       id={first ? "shop" : undefined}
     >
       {/* Image slider */}
-      <div className="min-h-screen h-full w-full relative overflow-x-hidden">
+      <div className="min-h-[450px] md:min-h-screen h-full w-full relative overflow-x-hidden">
         <ProductSwiper
           images={product.images}
           focuspoint={productExtension?.focuspoint}
