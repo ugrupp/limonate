@@ -65,7 +65,7 @@ const Topbar: React.FC<TopbarProps> = () => {
               style={{ paddingRight: scrollLock }}
             >
               {/* Cart */}
-              {totalItemsCount && (
+              {!!totalItemsCount && (
                 <button
                   onClick={openCartButtonHandler}
                   className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.04em] focus:outline-none focus-visible:outline-black"
