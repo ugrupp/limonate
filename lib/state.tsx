@@ -75,3 +75,9 @@ export const scrollLockState = atom<undefined | string>({
     },
   ],
 });
+
+// Scroll status
+export const pageScrolledState = atom<boolean>({
+  key: "pageScrolledState",
+  default: false,
+});

@@ -1,10 +1,12 @@
 import { InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { useSetRecoilState } from "recoil";
 import Container from "../components/container";
 import { Gradient, Sentinel } from "../components/scroll-gradient";
 import data from "../data/imprint.json";
+import { pageScrolledState } from "../lib/state";
 import richtextStyles from "../styles/richtext.module.css";
 
 export const getStaticProps = async () => {
@@ -18,6 +20,12 @@ export const getStaticProps = async () => {
 const Imprint: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   data,
 }) => {
+  // Set scroll state to show topbar
+  const setPageScrolledState = useSetRecoilState(pageScrolledState);
+  useEffect(() => {
+    setPageScrolledState(true);
+  }, []);
+
   const { ref: topSentinelRef, inView: topSentinelInView } = useInView({
     threshold: 0,
   });
