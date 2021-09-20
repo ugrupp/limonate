@@ -6,7 +6,7 @@ import { cartOpenState } from "../lib/state";
 import useCart from "../lib/useCart";
 import { formatCurrency } from "../lib/util";
 import cartStyles from "../styles/cart.module.css";
-import Button, { ButtonFwdRef } from "./button";
+import { ButtonFwdRef } from "./button";
 import CartItem from "./cart-item";
 import Overlay from "./overlay";
 import { Gradient, Sentinel } from "./scroll-gradient";

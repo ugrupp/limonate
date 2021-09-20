@@ -1,5 +1,4 @@
-import classNames from "classnames";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { loadingState } from "../lib/state";
 import Cart from "./cart";
@@ -10,14 +9,17 @@ interface LayoutProps {}
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const loading = useRecoilValue(loadingState);
+  const cursorClass = "cursor-progress";
+  useEffect(() => {
+    loading
+      ? document.body.classList.add(cursorClass)
+      : document.body.classList.remove(cursorClass);
+  }),
+    [loading];
 
   return (
     // TODO: apply to body
-    <div
-      className={classNames({
-        "cursor-progress": loading,
-      })}
-    >
+    <div>
       <Cart />
       <OverlayMenu />
 

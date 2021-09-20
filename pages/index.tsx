@@ -1,8 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import React, { useEffect } from "react";
-import { useInView, InView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 import { useSetRecoilState } from "recoil";
 import About from "../components/about";
 import Gallery from "../components/gallery";

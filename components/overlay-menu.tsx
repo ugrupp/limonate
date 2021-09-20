@@ -1,5 +1,4 @@
 import { Dialog, Transition } from "@headlessui/react";
-import classNames from "classnames";
 import React, { Fragment } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { menuOpenState, scrollLockState } from "../lib/state";
