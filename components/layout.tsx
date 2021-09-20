@@ -12,6 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const loading = useRecoilValue(loadingState);
 
   return (
+    // TODO: apply to body
     <div
       className={classNames({
         "cursor-progress": loading,

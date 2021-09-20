@@ -1,8 +1,9 @@
 import { Transition } from "@headlessui/react";
+import classNames from "classnames";
 import { Fragment } from "react";
 import { useInView } from "react-intersection-observer";
-import { useSetRecoilState } from "recoil";
-import { cartOpenState, menuOpenState } from "../lib/state";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { cartOpenState, menuOpenState, scrollLockState } from "../lib/state";
 import useBoop from "../lib/useBoop";
 import useCart from "../lib/useCart";
 import Container from "./container";
@@ -41,6 +42,8 @@ const Topbar: React.FC<TopbarProps> = () => {
     setMenuOpen(true);
   };
 
+  const scrollLock = useRecoilValue(scrollLockState);
+
   return (
     <>
       {/* Top sentinel to check if page is scrolled */}
@@ -53,12 +56,15 @@ const Topbar: React.FC<TopbarProps> = () => {
         <header className="fixed top-0 inset-x-0 z-30">
           <Container>
             <div className="relative">
-              <div className="absolute right-0 top-0 py-15 md:py-20 2xl:py-30 flex justify-end items-center gap-x-15 md:gap-x-20 2xl:gap-x-30">
+              <div
+                className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-start gap-x-15 md:gap-x-20 2xl:gap-x-30"
+                style={{ paddingRight: scrollLock }}
+              >
                 {/* Cart */}
                 {totalItemsCount && (
                   <button
                     onClick={openCartButtonHandler}
-                    className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.14em] focus:outline-none focus-visible:outline-black"
+                    className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.04em] focus:outline-none focus-visible:outline-black"
                   >
                     Warenkorb ({totalItemsCount})
                   </button>

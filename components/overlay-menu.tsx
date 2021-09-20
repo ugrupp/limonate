@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
+import classNames from "classnames";
 import React, { Fragment } from "react";
-import { useRecoilState } from "recoil";
-import { menuOpenState } from "../lib/state";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { menuOpenState, scrollLockState } from "../lib/state";
 import useBoop from "../lib/useBoop";
 import Container from "./container";
 import Dot from "./dot";
@@ -24,6 +25,8 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
     setOpen(false);
   };
 
+  const scrollLock = useRecoilValue(scrollLockState);
+
   return (
     <Transition
       as={Fragment}
@@ -38,11 +41,11 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
       <Dialog onClose={closeHandler} className="fixed z-40 inset-0">
         <Dialog.Overlay className="fixed inset-0 bg-light" />
 
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" style={{ paddingRight: scrollLock }}>
           {/* Closer */}
           <Container>
             <div className="relative z-20">
-              <div className="absolute right-0 top-15 md:top-20 2xl:top-30">
+              <div className="absolute top-15 right-0 md:top-20 2xl:top-30">
                 <Dot
                   text="Menü schließen"
                   theme="dark"
@@ -54,7 +57,9 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
               </div>
             </div>
           </Container>
+        </div>
 
+        <div className="absolute inset-0">
           {/* Menu */}
           <Menu />
         </div>
