@@ -61,6 +61,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
           {/* Content */}
           <div className="flex items-center justify-center h-screen xl:h-full">
+            <h1 className="sr-only">Limonate</h1>
+
             <Menu withIntro={true} />
           </div>
         </section>
