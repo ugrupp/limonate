@@ -68,8 +68,8 @@ const Menu = ({ withIntro = false }) => {
   ];
 
   const [startMenuAnimation, setStartMenuAnimation] = useState(false);
-  const [startIntroAnimation, setStartIntroAnimation] = useState(false);
-  const introAnimationDelay = 1500;
+  const [showLogo, setShowLogo] = useState(false);
+  const logoAnimationDelay = 1500;
 
   const scene = useRef(null);
   const [engine, setEngine] = useState(null);
@@ -273,9 +273,11 @@ const Menu = ({ withIntro = false }) => {
   useEffect(() => {
     // With intro -> start intro timeline
     if (withIntro) {
+      setShowLogo(true);
+
       setTimeout(() => {
-        setStartIntroAnimation(true);
-      }, introAnimationDelay);
+        setShowLogo(false);
+      }, logoAnimationDelay);
     } else {
       // No intro -> start animation immediately
       setStartMenuAnimation(true);
@@ -320,7 +322,7 @@ const Menu = ({ withIntro = false }) => {
       {/* Intro logo */}
       {withIntro && (
         <Transition
-          show={!startIntroAnimation}
+          show={showLogo}
           beforeLeave={() => {
             setStartMenuAnimation(true);
           }}
