@@ -97,7 +97,7 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
                   />
 
                   {/* Content */}
-                  <div className="pb-15 md:pb-40 xl:pb-60 2xl:pb-90">
+                  <div className="pt-4 pb-15 md:pb-40 xl:pb-60 2xl:pb-90">
                     {content}
                   </div>
 

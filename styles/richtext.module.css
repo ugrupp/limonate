@@ -18,6 +18,10 @@
     list-style: disc inside;
   }
 
+  & small {
+    @apply text-10 md:text-12 2xl:text-15 leading-snug;
+  }
+
   /* Spacing */
   & :is(p, address, ul, table, h2, h3, h4) {
     margin-top: 1em;

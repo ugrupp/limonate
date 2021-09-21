@@ -1,0 +1,9 @@
+{
+  "title": "Zahlung, Versand und Lieferung",
+  "col1": {
+    "text": "<h2 class='uppercase' id='lieferung-versand'>Zahlung</h2><p>Die auf den Produktseiten genannten Preise enthalten die gesetzliche Mehrwertsteuer und sonstige Preisbestandteile. Nur bei grenzüberschreitender Lieferung können im Einzelfall weitere Steuern (z.B. im Falle eines innergemeinschaftlichen Erwerbs) und/oder Abgaben (z.B. Zölle) von Ihnen zu zahlen sein, jedoch nicht an den Verkäufer, sondern an die dort zuständigen Zoll- bzw. Steuerbehörden. Versandkosten sind nicht im Kaufpreis enthalten und werden gesondert ausgewiesen.</p><p>Folgende Bezahlmöglichkeiten bieten wir an:</p><ul><li>Paypal</li><li>Kreditkarte</li></ul><p>Bei Zahlung per Kreditkarte erfolgt die Belastung Ihres Kreditkartenkontos mit Vertragsschluss.</p>"
+  },
+  "col2": {
+    "text": "<h2 class='uppercase' id='lieferung-versand'>Lieferung &amp; Versand</h2><p>Es gelten folgende Bedingungen:</p><p>Der Versand der Bestellung erfolgt per DHL und ausschließlich innerhalb Deutschlands. Die Versandkosten betragen 4,95€ inkl. MwSt. pro Bestellung. Der Versand auf deutsche Inseln ist ausgeschlossen. Die Versandkosten werden im Warenkorbsystem und auf der Bestellseite nochmal deutlich mitgeteilt.</p><p>Soweit im jeweiligen Angebot keine andere Frist angegeben ist, erfolgt die Lieferung der Ware im Inland (Deutschland) innerhalb von 7 Werktagen, nach Vertragsschluss (bei vereinbarter Vorauszahlung nach dem Zeitpunkt Ihrer Zahlungsanweisung). Beachten Sie, dass an Sonn- und Feiertagen keine Zustellung erfolgt. </p><p>Haben Sie Artikel mit unterschiedlichen Lieferzeiten bestellt, versenden wir die Ware in einer gemeinsamen Sendung, sofern wir keine abweichenden Vereinbarungen mit Ihnen getroffen haben. Die Lieferzeit bestimmt sich in diesem Fall nach dem Artikel mit der längsten Lieferzeit den Sie bestellt haben.</p>"
+  }
+}
