@@ -64,6 +64,7 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
         >
           {[
             {
+              colIndex: 1,
               content: col1Content,
               topSentinelRef: col1TopSentinelRef,
               topSentinelInView: col1TopSentinelInView,
@@ -71,6 +72,7 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
               bottomSentinelInView: col1BottomSentinelInView,
             },
             {
+              colIndex: 2,
               content: col2Content,
               topSentinelRef: col2TopSentinelRef,
               topSentinelInView: col2TopSentinelInView,
@@ -80,12 +82,13 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
           ].map(
             ({
               content,
+              colIndex,
               topSentinelInView,
               topSentinelRef,
               bottomSentinelInView,
               bottomSentinelRef,
             }) => (
-              <div className="xl:h-full xl:overflow-y-auto">
+              <div key={colIndex} className="xl:h-full xl:overflow-y-auto">
                 <div className="relative">
                   {/* Scroll gradient & sentinel (desktop) */}
                   <Sentinel position="top" ref={topSentinelRef} />
