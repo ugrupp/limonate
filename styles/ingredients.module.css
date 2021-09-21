@@ -1,0 +1,17 @@
+.root {
+  & h4 {
+    @apply text-16 md:text-20 2xl:text-25 leading-tight uppercase;
+  }
+
+  & table {
+    @apply w-full;
+
+    & thead {
+      display: none;
+    }
+
+    & td {
+      @apply align-bottom;
+    }
+  }
+}

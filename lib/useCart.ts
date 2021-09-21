@@ -1,6 +1,6 @@
 import { useSetRecoilState } from "recoil";
 import { Cart, LineItemToAdd } from "shopify-buy";
-import client from "./client";
+import { client } from "./client";
 import { cartState, loadingState } from "./state";
 import { useLoadableState } from "./useLoadable";
 

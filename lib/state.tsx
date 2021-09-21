@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 import { Cart } from "shopify-buy";
-import client from "./client";
+import { client } from "./client";
 
 // Menu overlay
 export const menuOpenState = atom<boolean>({

@@ -1,6 +1,3 @@
-/* @import "./richtext-spacing.css";
-@import "./richtext-list.css"; */
-
 .root {
   /* Elements */
   & strong {
@@ -22,9 +19,18 @@
   }
 
   /* Spacing */
-  & :is(p, address) {
+  & :is(p, address, ul, table, h2, h3, h4) {
     margin-top: 1em;
     margin-bottom: 1em;
+  }
+
+  & :is(h2, h3) {
+    margin-top: 2em;
+  }
+
+  & li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 
   /* General */

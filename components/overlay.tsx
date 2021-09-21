@@ -1,17 +1,21 @@
 import { Dialog, Transition } from "@headlessui/react";
+import classNames from "classnames";
 import React, { Fragment } from "react";
-import { useRecoilValue } from "recoil";
-import { scrollLockState } from "../lib/state";
 import useBoop from "../lib/useBoop";
-import Container from "./container";
 import Dot from "./dot";
 
 interface OverlayProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  desktopHalf?: boolean;
 }
 
-const Overlay: React.FC<OverlayProps> = ({ children, isOpen, setIsOpen }) => {
+const Overlay: React.FC<OverlayProps> = ({
+  children,
+  isOpen,
+  setIsOpen,
+  desktopHalf = false,
+}) => {
   const [
     menuOpenerBoopAnimation,
     menuOpenerBoopTransition,
@@ -26,7 +30,15 @@ const Overlay: React.FC<OverlayProps> = ({ children, isOpen, setIsOpen }) => {
 
   return (
     <Transition show={isOpen}>
-      <Dialog onClose={() => setIsOpen(false)} className="fixed z-40 inset-0">
+      <Dialog
+        onClose={() => setIsOpen(false)}
+        className={classNames([
+          "fixed z-40 inset-0",
+          {
+            "xl:left-1/2": desktopHalf,
+          },
+        ])}
+      >
         {/* Background */}
         <Transition.Child
           enter="transition duration-300 ease-out"
@@ -37,7 +49,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, isOpen, setIsOpen }) => {
           leaveTo="transform opacity-0"
           as={Fragment}
         >
-          <Dialog.Overlay className="fixed inset-0 bg-light" />
+          <Dialog.Overlay className="absolute inset-0 bg-light" />
         </Transition.Child>
 
         {/* Content */}
@@ -50,7 +62,15 @@ const Overlay: React.FC<OverlayProps> = ({ children, isOpen, setIsOpen }) => {
           leaveTo="transform scale-95 opacity-0"
           as={Fragment}
         >
-          <div className="absolute inset-15 md:inset-40 xl:inset-60 2xl:inset-x-90 max-w-8xl mx-auto bg-dark rounded-[15px] selection-inverted text-light">
+          <div
+            className={classNames([
+              "absolute inset-15 md:inset-40 max-w-8xl mx-auto bg-dark rounded-[15px] selection-inverted text-light",
+              {
+                "xl:inset-60 2xl:inset-x-90": !desktopHalf,
+                "2xl:inset-60 3xl:inset-x-90": desktopHalf,
+              },
+            ])}
+          >
             {/* Closer */}
             <div className="absolute z-20 top-15 right-15 md:top-20 md:right-20 2xl:top-30 2xl:right-30">
               <Dot
