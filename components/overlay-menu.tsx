@@ -40,8 +40,8 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
       <Dialog onClose={closeHandler} className="fixed z-40 inset-0">
         <Dialog.Overlay className="fixed inset-0 bg-light" />
 
+        {/* Closer */}
         <div className="absolute inset-0" style={{ paddingRight: scrollLock }}>
-          {/* Closer */}
           <Container>
             <div className="relative z-20">
               <div className="absolute top-15 right-0 md:top-20 2xl:top-30">

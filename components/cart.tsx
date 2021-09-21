@@ -50,14 +50,20 @@ const Cart: React.FC<CartProps> = () => {
             color="dark"
             classes="rounded-t-[15px]"
           />
-          <div className="p-15 md:p-40 2xl:p-60 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow relative z-0">
+          <div className="px-15 pb-15 pt-30 md:p-40 xl:pr-60 2xl:p-60 2xl:pr-90 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow relative z-0">
             <div className="text-23 md:text-35 2xl:text-50 leading-none uppercase">
               {/* Product list head */}
               <div className="hidden md:block md:mb-40 2xl:mb-60">
                 <div className={cartStyles.root}>
-                  <h4 className="hidden md:block">Produkt</h4>
-                  <h4 className="hidden xl:block xl:text-center">Menge</h4>
-                  <h4 className="hidden xl:block text-right">Preis</h4>
+                  <h4 className="hidden md:block translate-y-[0.14em]">
+                    Produkt
+                  </h4>
+                  <h4 className="hidden xl:block xl:text-center translate-y-[0.14em]">
+                    Menge
+                  </h4>
+                  <h4 className="hidden xl:block text-right translate-y-[0.14em]">
+                    Preis
+                  </h4>
                 </div>
               </div>
 
