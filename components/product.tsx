@@ -8,6 +8,7 @@ import { cartOpenState } from "../lib/state";
 import useCart from "../lib/useCart";
 import { formatCurrency, formatUnitPrice } from "../lib/util";
 import ingredientsStyles from "../styles/ingredients.module.css";
+import productStyles from "../styles/product.module.css";
 import richtextStyles from "../styles/richtext.module.css";
 import scrollsnapStyles from "../styles/scrollsnap.module.css";
 import Button, { buttonStyles } from "./button";
@@ -188,6 +189,7 @@ const Product: React.FC<ProductProps> = ({
                 <div
                   className={[
                     richtextStyles.root,
+                    productStyles.root,
                     "font-serif text-25 md:text-40 xl:text-35 2xl:text-55 leading-none",
                   ].join(" ")}
                   dangerouslySetInnerHTML={{
