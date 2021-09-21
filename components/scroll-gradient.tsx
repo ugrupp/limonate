@@ -37,13 +37,15 @@ const Gradient: React.FC<GradientProps> = ({
 
 interface SentinelProps {
   position: "top" | "bottom";
+  classes?: string;
 }
 
 const Sentinel = React.forwardRef<HTMLDivElement, SentinelProps>(
-  ({ position }, ref) => (
+  ({ position, classes }, ref) => (
     <div
       className={classNames([
         "absolute inset-x-0 h-px",
+        classes,
         {
           "top-0": position === "top",
           "bottom-0": position === "bottom",

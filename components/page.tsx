@@ -1,0 +1,134 @@
+import classNames from "classnames";
+import React, { ReactNode, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import { useSetRecoilState } from "recoil";
+import Container from "../components/container";
+import { pageScrolledState } from "../lib/state";
+import { Gradient, Sentinel } from "./scroll-gradient";
+
+interface PageProps {
+  col1Content: ReactNode;
+  col2Content: ReactNode;
+}
+
+const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
+  // Set up sentinels
+  const {
+    ref: mobileTopSentinelRef,
+    inView: mobileTopSentinelInView,
+    entry: mobileTopSentinelEntry,
+  } = useInView();
+  const { ref: mobileBottomSentinelRef, inView: mobileBottomSentinelInView } =
+    useInView();
+  const { ref: col1TopSentinelRef, inView: col1TopSentinelInView } =
+    useInView();
+  const { ref: col1BottomSentinelRef, inView: col1BottomSentinelInView } =
+    useInView();
+  const { ref: col2TopSentinelRef, inView: col2TopSentinelInView } =
+    useInView();
+  const { ref: col2BottomSentinelRef, inView: col2BottomSentinelInView } =
+    useInView();
+
+  // Set scroll state to show topbar
+  const setPageScrolledState = useSetRecoilState(pageScrolledState);
+  useEffect(() => {
+    if (mobileTopSentinelEntry) {
+      setPageScrolledState(!mobileTopSentinelInView);
+    }
+  }, [mobileTopSentinelInView, mobileTopSentinelEntry]);
+
+  return (
+    <div className="relative">
+      {/* Scroll gradient & sentinel */}
+      <Sentinel
+        position="top"
+        ref={mobileTopSentinelRef}
+        classes="xl:!hidden"
+      />
+      <Gradient
+        position="top"
+        visible={mobileTopSentinelInView}
+        mobileHidden={false}
+        classes="xl:!hidden"
+        dimensions="h-60 -mb-60 md:h-90 md:-mb-90"
+      />
+
+      <Container>
+        <div
+          className={classNames([
+            "grid xl:grid-cols-2 gap-y-60 md:gap-y-90 gap-x-40 2xl:gap-x-60 ",
+            {
+              "pt-15 md:pt-40 xl:pt-60 2xl:pt-90 xl:h-screen": true,
+            },
+          ])}
+        >
+          {[
+            {
+              content: col1Content,
+              topSentinelRef: col1TopSentinelRef,
+              topSentinelInView: col1TopSentinelInView,
+              bottomSentinelRef: col1BottomSentinelRef,
+              bottomSentinelInView: col1BottomSentinelInView,
+            },
+            {
+              content: col2Content,
+              topSentinelRef: col2TopSentinelRef,
+              topSentinelInView: col2TopSentinelInView,
+              bottomSentinelRef: col2BottomSentinelRef,
+              bottomSentinelInView: col2BottomSentinelInView,
+            },
+          ].map(
+            ({
+              content,
+              topSentinelInView,
+              topSentinelRef,
+              bottomSentinelInView,
+              bottomSentinelRef,
+            }) => (
+              <div className="xl:h-full xl:overflow-y-auto">
+                <div className="relative">
+                  {/* Scroll gradient & sentinel */}
+                  <Sentinel position="top" ref={topSentinelRef} />
+                  <Gradient
+                    position="top"
+                    visible={topSentinelInView}
+                    dimensions="h-60 -mb-60"
+                  />
+
+                  {/* Content */}
+                  <div className="pb-15 md:pb-40 xl:pb-60 2xl:pb-90">
+                    {content}
+                  </div>
+
+                  {/* Scroll gradient & sentinel */}
+                  <Gradient
+                    position="bottom"
+                    visible={bottomSentinelInView}
+                    dimensions="h-60 -mt-60"
+                  />
+                  <Sentinel position="bottom" ref={bottomSentinelRef} />
+                </div>
+              </div>
+            )
+          )}
+        </div>
+      </Container>
+
+      {/* Scroll gradient & sentinel */}
+      <Gradient
+        position="bottom"
+        visible={mobileBottomSentinelInView}
+        mobileHidden={false}
+        classes="xl:!hidden"
+        dimensions="h-60 -mt-60 md:h-90 md:-mt-90"
+      />
+      <Sentinel
+        position="bottom"
+        ref={mobileBottomSentinelRef}
+        classes="xl:!hidden"
+      />
+    </div>
+  );
+};
+
+export default Page;

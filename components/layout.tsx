@@ -18,7 +18,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     [loading];
 
   return (
-    // TODO: apply to body
     <div>
       <Cart />
       <OverlayMenu />
