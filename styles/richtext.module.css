@@ -24,7 +24,7 @@
     margin-bottom: 1em;
   }
 
-  & :is(h2, h3) {
+  & :is(h2) {
     margin-top: 2em;
   }
 

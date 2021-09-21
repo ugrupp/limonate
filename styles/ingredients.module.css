@@ -3,6 +3,10 @@
     @apply text-16 md:text-20 2xl:text-25 leading-tight uppercase;
   }
 
+  & h3 {
+    margin-top: 2em;
+  }
+
   & table {
     @apply w-full;
 

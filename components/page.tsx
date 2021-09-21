@@ -39,7 +39,7 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
 
   return (
     <div className="relative">
-      {/* Scroll gradient & sentinel */}
+      {/* Scroll gradient & sentinel (mobile) */}
       <Sentinel
         position="top"
         ref={mobileTopSentinelRef}
@@ -87,11 +87,12 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
             }) => (
               <div className="xl:h-full xl:overflow-y-auto">
                 <div className="relative">
-                  {/* Scroll gradient & sentinel */}
+                  {/* Scroll gradient & sentinel (desktop) */}
                   <Sentinel position="top" ref={topSentinelRef} />
                   <Gradient
                     position="top"
                     visible={topSentinelInView}
+                    mobileHidden={true}
                     dimensions="h-60 -mb-60"
                   />
 
@@ -100,10 +101,11 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
                     {content}
                   </div>
 
-                  {/* Scroll gradient & sentinel */}
+                  {/* Scroll gradient & sentinel (desktop) */}
                   <Gradient
                     position="bottom"
                     visible={bottomSentinelInView}
+                    mobileHidden={true}
                     dimensions="h-60 -mt-60"
                   />
                   <Sentinel position="bottom" ref={bottomSentinelRef} />
@@ -114,7 +116,7 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
         </div>
       </Container>
 
-      {/* Scroll gradient & sentinel */}
+      {/* Scroll gradient & sentinel (mobile) */}
       <Gradient
         position="bottom"
         visible={mobileBottomSentinelInView}
