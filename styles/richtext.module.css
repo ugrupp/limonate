@@ -5,11 +5,11 @@
   }
 
   & a {
-    @apply transition-all duration-200;
+    @apply transition-colors duration-200;
 
     &:hover,
     &:focus-visible {
-      @apply tracking-wide;
+      @apply bg-dark text-light;
     }
   }
 
@@ -40,5 +40,14 @@
 
   & > :last-child {
     margin-bottom: 0;
+  }
+}
+
+.inverted {
+  & a {
+    &:hover,
+    &:focus-visible {
+      @apply bg-light text-dark;
+    }
   }
 }
