@@ -184,7 +184,7 @@ const Product: React.FC<ProductProps> = ({
                   position="top"
                   visible={topSentinelInView}
                   mobileHidden={false}
-                  dimensions="h-60 -mb-60 2xl:h-90 2xl:-mb-90"
+                  dimensions="h-40 -mb-40 2xl:h-90 2xl:-mb-90"
                 />
 
                 {/* Description */}
@@ -205,7 +205,7 @@ const Product: React.FC<ProductProps> = ({
                   position="bottom"
                   visible={bottomSentinelInView}
                   mobileHidden={false}
-                  dimensions="h-60 -mt-60 2xl:h-90 2xl:-mt-90"
+                  dimensions="h-40 -mt-40 2xl:h-90 2xl:-mt-90"
                 />
                 <Sentinel position="bottom" ref={bottomSentinelRef} />
               </div>
