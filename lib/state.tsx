@@ -18,7 +18,8 @@ export const cartOpenState = atom<boolean>({
 export const fetchCartState = selector({
   key: "fetchCartState",
   get: async () => {
-    const lsCheckoutId = localStorage.getItem("checkoutId");
+    const lsCheckoutId =
+      typeof window !== "undefined" ? null : localStorage.getItem("checkoutId");
 
     let newCart: Cart;
     let newCheckoutId: string;
