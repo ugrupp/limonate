@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useSetRecoilState } from "recoil";
 import Container from "../components/container";
 import { pageScrolledState } from "../lib/state";
+import Button from "./button";
 import { Gradient, Sentinel } from "./scroll-gradient";
 
 interface PageProps {
@@ -102,6 +103,13 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
                   {/* Content */}
                   <div className="pt-4 pb-15 md:pb-40 xl:pb-60 2xl:pb-90">
                     {content}
+
+                    {/* Mobile back button */}
+                    {colIndex === 2 && (
+                      <div className="mt-60 xl:hidden">
+                        <Button href="/#info">Zurück</Button>
+                      </div>
+                    )}
                   </div>
 
                   {/* Scroll gradient & sentinel (desktop) */}
