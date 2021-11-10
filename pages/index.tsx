@@ -100,8 +100,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <Head>
         <title>Limonate</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={scrollsnapStyles.wrapper}>
