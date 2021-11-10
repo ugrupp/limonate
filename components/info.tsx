@@ -30,7 +30,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
       <div className="h-full overflow-y-auto" ref={intersectionRoot}>
         <Container
           className="min-h-full flex flex-col"
-          classNameInner="relative flex-grow flex flex-col"
+          classNameInner="relative flex-grow flex flex-col !max-w-none"
         >
           {/* Scroll gradient & sentinel */}
           <Sentinel position="top" ref={topSentinelRef} />

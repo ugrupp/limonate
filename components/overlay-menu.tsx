@@ -42,7 +42,7 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
 
         {/* Closer */}
         <div className="absolute inset-0" style={{ paddingRight: scrollLock }}>
-          <Container>
+          <Container classNameInner="!max-w-none">
             <div className="relative z-20">
               <div className="absolute top-15 right-0 md:top-20 2xl:top-30">
                 <Dot

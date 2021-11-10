@@ -32,14 +32,14 @@ const About: React.FC<AboutProps> = ({ text }) => {
 
           {/* Content */}
           <div className="pt-15 pb-120 md:pt-40 md:pb-240 xl:py-60 3xl:py-90">
-            <Container>
+            <Container classNameInner="!max-w-none">
               <div
                 className={[
                   richtextStyles.root,
                   "font-serif text-25 md:text-40 xl:text-50 2xl:text-75 leading-none",
                 ].join(" ")}
                 dangerouslySetInnerHTML={{ __html: text }}
-              ></div>
+              />
             </Container>
           </div>
 

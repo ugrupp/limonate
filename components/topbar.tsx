@@ -58,7 +58,7 @@ const Topbar: React.FC<TopbarProps> = () => {
       leaveTo="transform opacity-0"
     >
       <header className="fixed top-0 inset-x-0 z-30">
-        <Container>
+        <Container classNameInner="!max-w-none">
           <div className="relative">
             <div
               className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-start gap-x-15 md:gap-x-20 2xl:gap-x-30"
