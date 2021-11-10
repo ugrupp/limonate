@@ -1,6 +1,6 @@
 # 🍋 [limonate.limo](https://www.limonate.limo)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0b279b48-0c32-4f56-8947-72e7cc21b699/deploy-status)](https://app.netlify.com/sites/limonate/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6c4e130b-de07-4d75-acb2-e81347bdb924/deploy-status)](https://app.netlify.com/sites/limonate/deploys)
 
 ## Based on
 
