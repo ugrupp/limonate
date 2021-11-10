@@ -12,6 +12,7 @@ import Gallery from "../components/gallery";
 import Info from "../components/info";
 import Menu from "../components/menu";
 import Shop from "../components/shop";
+import Signet from "../components/signet";
 import data from "../data/index.json";
 import shopData from "../data/shop.json";
 import { clientUnoptimized } from "../lib/client";
@@ -127,15 +128,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <Gallery gallery={data.gallery} />
 
         {/* Signet */}
-        <section className={scrollsnapStyles.section}>
-          <div className="flex items-center justify-center h-screen xl:h-full">
-            <img
-              className="max-w-full w-[150px] md:w-[275px] 3xl:w-[390px]"
-              src="/images/limonate-signet.svg"
-              alt="Limonate"
-            />
-          </div>
-        </section>
+        <Signet />
 
         {/* Shop */}
         <Shop
