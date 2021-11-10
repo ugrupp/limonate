@@ -41,7 +41,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           />
 
           {/* Content */}
-          <div className="flex-grow flex flex-col pt-15 pb-40 md:pt-40 xl:py-60 3xl:pt-90">
+          <div className="flex-grow flex flex-col pt-15 pb-15 md:py-40 xl:py-60 3xl:pt-90">
             {/* Text */}
             <div
               className={[
@@ -56,7 +56,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             <div
               className={[
                 richtextStyles.root,
-                "text-16 md:text-20 2xl:text-25 leading-tight uppercase mt-[1.25em] mb-90",
+                "text-16 md:text-20 2xl:text-25 leading-tight uppercase mt-[1.25em] mb-40",
                 "3xl:w-4/5",
               ].join(" ")}
               dangerouslySetInnerHTML={{ __html: data.address }}
