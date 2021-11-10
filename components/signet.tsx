@@ -24,6 +24,7 @@ const Signet: React.FC<SignetProps> = () => {
           className="w-[150px] md:w-[275px] 3xl:w-[390px]"
           poster="/images/limonate-signet.svg"
           loop
+          preload="auto"
           ref={videoRef}
         >
           <source src="/videos/limonate-animation.mp4" />
