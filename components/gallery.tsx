@@ -43,7 +43,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
       id="was"
     >
       {/* Navigation */}
-      <div className="hidden xl:flex absolute inset-0 z-10">
+      <div className="hidden xl:flex xl:justify-between absolute inset-0 z-10">
         <button
           ref={prevEl}
           className="w-1/3"
@@ -53,7 +53,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
         />
         <button
           ref={nextEl}
-          className="w-2/3"
+          className="w-1/3"
           style={{
             cursor: nextImage && `url('${nextImage}'), auto`,
           }}
