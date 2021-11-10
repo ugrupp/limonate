@@ -10,9 +10,14 @@ import { Gradient, Sentinel } from "./scroll-gradient";
 interface PageProps {
   col1Content: ReactNode;
   col2Content: ReactNode;
+  pageScroll?: boolean;
 }
 
-const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
+const Page: React.FC<PageProps> = ({
+  col1Content,
+  col2Content,
+  pageScroll = true,
+}) => {
   // Set up sentinels
   const {
     ref: mobileTopSentinelRef,
@@ -89,7 +94,10 @@ const Page: React.FC<PageProps> = ({ col1Content, col2Content }) => {
               bottomSentinelInView,
               bottomSentinelRef,
             }) => (
-              <div key={colIndex} className="xl:h-full xl:overflow-y-auto">
+              <div
+                key={colIndex}
+                className={pageScroll ? "" : "xl:h-full xl:overflow-y-auto"}
+              >
                 <div className="relative">
                   {/* Scroll gradient & sentinel (desktop) */}
                   <Sentinel position="top" ref={topSentinelRef} />
