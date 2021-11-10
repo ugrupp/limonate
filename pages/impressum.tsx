@@ -36,6 +36,7 @@ const Imprint: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <div
               className={[
                 richtextStyles.root,
+                richtextStyles.hover,
                 "font-serif text-25 md:text-40 xl:text-35 2xl:text-55 leading-none",
               ].join(" ")}
               dangerouslySetInnerHTML={{ __html: data.col1.text }}

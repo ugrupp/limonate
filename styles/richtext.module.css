@@ -4,15 +4,6 @@
     @apply font-bold;
   }
 
-  & a {
-    @apply transition-colors duration-200;
-
-    &:hover,
-    &:focus-visible {
-      @apply bg-dark text-light;
-    }
-  }
-
   /* TODO: disc outside */
   & ul {
     list-style: disc inside;
@@ -47,11 +38,13 @@
   }
 }
 
-.inverted {
+.hover {
   & a {
+    @apply transition-all duration-200;
+
     &:hover,
     &:focus-visible {
-      @apply bg-light text-dark;
+      @apply tracking-wide;
     }
   }
 }

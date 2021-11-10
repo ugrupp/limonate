@@ -56,6 +56,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             <div
               className={[
                 richtextStyles.root,
+                richtextStyles.hover,
                 "text-16 md:text-20 2xl:text-25 leading-tight uppercase mt-[1.25em] mb-40",
                 "3xl:w-4/5",
               ].join(" ")}
