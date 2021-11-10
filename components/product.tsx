@@ -101,47 +101,49 @@ const Product: React.FC<ProductProps> = ({
         setIsOpen={setIsIngredientsOverlayOpen}
         desktopHalf={true}
       >
-        <div className="overflow-auto h-full">
-          <div className="relative min-h-full flex flex-col">
-            {/* Scroll gradient & sentinel */}
-            <Sentinel position="top" ref={overlayTopSentinelRef} />
-            <Gradient
-              position="top"
-              visible={overlayTopSentinelInView}
-              mobileHidden={false}
-              dimensions="h-40 -mb-40 md:h-60 md:-mb-60 2xl:h-90 2xl:-mb-90"
-              color="dark"
-              classes="rounded-t-[15px]"
-            />
+        <div className="h-full px-2 py-10">
+          <div className="overflow-auto h-full">
+            <div className="relative min-h-full flex flex-col">
+              {/* Scroll gradient & sentinel */}
+              <Sentinel position="top" ref={overlayTopSentinelRef} />
+              <Gradient
+                position="top"
+                visible={overlayTopSentinelInView}
+                mobileHidden={false}
+                dimensions="h-40 -mb-40 md:h-60 md:-mb-60 2xl:h-90 2xl:-mb-90"
+                color="dark"
+                classes="rounded-t-[15px]"
+              />
 
-            <div className="px-15 pb-15 pt-30 md:p-40 xl:pr-60 2xl:p-60 2xl:pr-90 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow relative z-0">
-              {/* Ingredients */}
-              {!!ingredientsText && (
-                <div
-                  className={[
-                    richtextStyles.root,
-                    ingredientsStyles.root,
-                    "font-sans text-23 md:text-35 3xl:text-50 leading-none",
-                  ].join(" ")}
-                  dangerouslySetInnerHTML={{
-                    // @ts-ignore
-                    __html: ingredientsText,
-                  }}
-                />
-              )}
+              <div className="px-15 pb-15 pt-30 md:p-40 xl:pr-60 2xl:p-60 2xl:pr-90 flex flex-col gap-y-50 md:gap-y-80 xl:gap-y-90 2xl:gap-y-120 flex-grow relative z-0">
+                {/* Ingredients */}
+                {!!ingredientsText && (
+                  <div
+                    className={[
+                      richtextStyles.root,
+                      ingredientsStyles.root,
+                      "font-sans text-23 md:text-35 3xl:text-50 leading-none",
+                    ].join(" ")}
+                    dangerouslySetInnerHTML={{
+                      // @ts-ignore
+                      __html: ingredientsText,
+                    }}
+                  />
+                )}
+              </div>
+
+              {/* Scroll gradient & sentinel */}
+              {/* TODO: positioning */}
+              <Gradient
+                position="bottom"
+                visible={overlayBottomSentinelInView}
+                mobileHidden={false}
+                dimensions="h-40 -mt-40 md:h-60 md:-mt-60 2xl:h-90 2xl:-mt-90"
+                color="dark"
+                classes="rounded-b-[15px]"
+              />
+              <Sentinel position="bottom" ref={overlayBottomSentinelRef} />
             </div>
-
-            {/* Scroll gradient & sentinel */}
-            {/* TODO: positioning */}
-            <Gradient
-              position="bottom"
-              visible={overlayBottomSentinelInView}
-              mobileHidden={false}
-              dimensions="h-40 -mt-40 md:h-60 md:-mt-60 2xl:h-90 2xl:-mt-90"
-              color="dark"
-              classes="rounded-b-[15px]"
-            />
-            <Sentinel position="bottom" ref={overlayBottomSentinelRef} />
           </div>
         </div>
       </Overlay>
