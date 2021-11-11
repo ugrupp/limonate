@@ -13,7 +13,17 @@ const Signet: React.FC<SignetProps> = () => {
 
   useEffect(() => {
     if (sectionInView) {
-      videoRef.current?.play();
+      let promise = videoRef.current?.play();
+      if (promise !== undefined) {
+        promise
+          .catch((error) => {
+            // Auto-play was prevented
+            console.log("autoplay prevented", error);
+          })
+          .then(() => {
+            // Auto-play started
+          });
+      }
     }
   }, [sectionInView]);
 
@@ -25,6 +35,7 @@ const Signet: React.FC<SignetProps> = () => {
           poster="/images/limonate-signet.svg"
           loop
           preload="auto"
+          muted
           ref={videoRef}
         >
           <source src="/videos/limonate-animation.mp4" />
