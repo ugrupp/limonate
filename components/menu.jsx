@@ -25,6 +25,7 @@ const Menu = ({ withIntro = false }) => {
       text: "Wer?",
       href: "/#wer",
       texture: "/images/wer.png",
+      textureSm: "/images/wer-sm.png",
       position: {
         x: 0.225,
         y: -0.25,
@@ -36,6 +37,7 @@ const Menu = ({ withIntro = false }) => {
       text: "Was?",
       href: "/#was",
       texture: "/images/was.png",
+      textureSm: "/images/was-sm.png",
       position: {
         x: 0.44,
         y: -0.55,
@@ -47,6 +49,7 @@ const Menu = ({ withIntro = false }) => {
       text: "Shop",
       href: "/#shop",
       texture: "/images/shop.png",
+      textureSm: "/images/shop-sm.png",
       position: {
         x: 0.6,
         y: -1.2,
@@ -58,6 +61,7 @@ const Menu = ({ withIntro = false }) => {
       text: "Info",
       href: "/#info",
       texture: "/images/info.png",
+      textureSm: "/images/info-sm.png",
       position: {
         x: 0.75,
         y: -0.8,
@@ -98,13 +102,15 @@ const Menu = ({ withIntro = false }) => {
       Runner.run(runner, engine);
       Render.run(render);
 
+      const breakpointSm = window.matchMedia("(min-width: 576px)").matches;
+      const breakpointMd = window.matchMedia("(min-width: 768px)").matches;
+      const breakpointLg = window.matchMedia("(min-width: 1024px)").matches;
+
       // Create menu items
-      const targetWidthFactor = window.matchMedia("(min-width: 1024px)").matches
-        ? 0.3
-        : 0.48;
+      const targetWidthFactor = breakpointLg ? 0.3 : 0.48;
       const targetWidth = width * targetWidthFactor;
-      const textureWidth = 601;
-      const textureHeight = 294;
+      const textureWidth = breakpointSm ? 601 : 250;
+      const textureHeight = breakpointSm ? 294 : 123;
       const yCentreOffset = 0.7;
 
       const textureShrink = 0.96;
@@ -112,6 +118,7 @@ const Menu = ({ withIntro = false }) => {
       // Render each menu item using menu shape body with custom texture
       const menuItemBodies = menuItems.map(function ({
         texture,
+        textureSm,
         href,
         position,
         angle,
@@ -128,6 +135,7 @@ const Menu = ({ withIntro = false }) => {
           {
             density: 0.6,
             friction: 0.45,
+            frictionAir: breakpointMd ? 0.01 : 0.03,
             restitution: 0.425,
             chamfer: {
               radius: [0, 0, targetWidth / 2 - 1, targetWidth / 2 - 1],
@@ -135,7 +143,7 @@ const Menu = ({ withIntro = false }) => {
             },
             render: {
               sprite: {
-                texture,
+                texture: breakpointSm ? texture : textureSm,
                 xScale: (targetWidth / textureWidth) * textureShrink,
                 yScale:
                   (targetWidth / textureHeight) *
