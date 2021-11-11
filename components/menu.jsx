@@ -257,6 +257,14 @@ const Menu = ({ withIntro = false }) => {
         mouseConstraint.mouse.mousewheel
       );
       mouseConstraint.mouse.element.removeEventListener(
+        "touchstart",
+        mouseConstraint.mouse.mousedown
+      );
+      mouseConstraint.mouse.element.removeEventListener(
+        "touchend",
+        mouseConstraint.mouse.mouseup
+      );
+      mouseConstraint.mouse.element.removeEventListener(
         "touchmove",
         mouseConstraint.mouse.mousemove
       );

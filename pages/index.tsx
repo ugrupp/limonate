@@ -2,6 +2,7 @@ import cloneDeepWith from "lodash.clonedeepwith";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import React, { useEffect } from "react";
+import { use100vh } from "react-div-100vh";
 import { useInView } from "react-intersection-observer";
 import { useSetRecoilState } from "recoil";
 import { remark } from "remark";
@@ -86,6 +87,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   products,
   productsMetaData,
 }) => {
+  const vhFixedHeight = use100vh();
+
   // Set scroll status to global state
   const { ref: topSentinelRef, inView: topSentinelInView, entry } = useInView();
 
@@ -102,9 +105,18 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <title>Limonate</title>
       </Head>
 
-      <div className={scrollsnapStyles.wrapper}>
+      <div
+        className={scrollsnapStyles.wrapper}
+        style={{ height: vhFixedHeight ?? undefined }}
+      >
         {/* Intro */}
-        <section className={`${scrollsnapStyles.section} relative`} id="start">
+        <section
+          className={`${scrollsnapStyles.section} relative`}
+          id="start"
+          style={{
+            height: vhFixedHeight ?? undefined,
+          }}
+        >
           {/* Top sentinel to check if page is scrolled */}
           <div
             className="absolute top-0 inset-x-0 h-px pointer-events-none"
@@ -112,7 +124,10 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           />
 
           {/* Content */}
-          <div className="flex items-center justify-center h-screen xl:h-full">
+          <div
+            className="flex items-center justify-center h-screen xl:!h-full"
+            style={{ height: vhFixedHeight ?? undefined }}
+          >
             <h1 className="sr-only">Limonate</h1>
 
             <Menu withIntro={true} />
