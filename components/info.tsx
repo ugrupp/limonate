@@ -41,7 +41,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           />
 
           {/* Content */}
-          <div className="flex-grow flex flex-col pt-15 pb-15 md:py-40 xl:py-60 3xl:pt-90">
+          <div className="flex-grow flex flex-col pt-40 pb-15 md:py-40 xl:py-60 3xl:pt-90">
             {/* Text */}
             <div
               className={[
