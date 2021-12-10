@@ -31,7 +31,7 @@ const About: React.FC<AboutProps> = ({ text }) => {
           />
 
           {/* Content */}
-          <div className="pt-15 pb-120 md:pt-40 md:pb-240 xl:py-60 3xl:py-90">
+          <div className="pt-15 pb-120 md:pt-40 md:pb-240 xl:pt-90 xl:pb-60 3xl:py-90">
             <Container classNameInner="!max-w-none">
               <div
                 className={[
