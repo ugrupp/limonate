@@ -19,10 +19,6 @@
     margin-bottom: 1em;
   }
 
-  & :is(h2) {
-    margin-top: 2em;
-  }
-
   & li {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -35,6 +31,10 @@
 
   & > :last-child {
     margin-bottom: 0;
+  }
+
+  & a {
+    overflow-wrap: anywhere;
   }
 }
 
