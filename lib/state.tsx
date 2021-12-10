@@ -19,7 +19,7 @@ export const fetchCartState = selector({
   key: "fetchCartState",
   get: async () => {
     const lsCheckoutId =
-      typeof window !== "undefined" ? null : localStorage.getItem("checkoutId");
+      typeof window === "undefined" ? null : localStorage.getItem("checkoutId");
 
     let newCart: Cart;
     let newCheckoutId: string;
