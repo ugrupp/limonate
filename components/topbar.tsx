@@ -61,14 +61,14 @@ const Topbar: React.FC<TopbarProps> = () => {
         <Container classNameInner="!max-w-none">
           <div className="relative">
             <div
-              className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-start gap-x-15 md:gap-x-20 2xl:gap-x-30"
+              className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-center gap-x-15 md:gap-x-20 2xl:gap-x-30"
               style={{ paddingRight: scrollLock }}
             >
               {/* Cart */}
               {!!totalItemsCount && (
                 <button
                   onClick={openCartButtonHandler}
-                  className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.04em] focus:outline-none focus-visible:outline-black"
+                  className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.2em] focus:outline-none focus-visible:outline-black"
                 >
                   Warenkorb ({totalItemsCount})
                 </button>
