@@ -59,10 +59,10 @@ const Page: React.FC<PageProps> = ({
         dimensions="h-60 -mb-60 md:h-90 md:-mb-90"
       />
 
-      <Container>
+      <Container classNameInner="!max-w-none">
         <div
           className={classNames([
-            "grid xl:grid-cols-2 gap-y-60 md:gap-y-90 gap-x-40 2xl:gap-x-60 ",
+            "grid xl:grid-cols-2 gap-y-60 md:gap-y-90 gap-x-40 2xl:gap-x-60",
             {
               "pt-15 md:pt-40 xl:pt-60 2xl:pt-90 xl:h-screen": true,
             },
