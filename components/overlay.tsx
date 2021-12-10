@@ -64,7 +64,7 @@ const Overlay: React.FC<OverlayProps> = ({
         >
           <div
             className={classNames([
-              "absolute inset-15 md:inset-40 max-w-8xl mx-auto bg-dark rounded-[15px] selection-inverted text-light",
+              "absolute inset-15 md:inset-40 mx-auto bg-dark rounded-[15px] selection-inverted text-light",
               {
                 "xl:inset-60 2xl:inset-x-90": !desktopHalf,
                 "2xl:inset-60 3xl:inset-x-90": desktopHalf,
