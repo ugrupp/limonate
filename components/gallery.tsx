@@ -46,14 +46,14 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
       <div className="hidden xl:flex xl:justify-between absolute inset-0 z-10">
         <button
           ref={prevEl}
-          className="w-1/3"
+          className="w-2/5"
           style={{
             cursor: prevImage && `url('${prevImage}'), auto`,
           }}
         />
         <button
           ref={nextEl}
-          className="w-1/3"
+          className="w-2/5"
           style={{
             cursor: nextImage && `url('${nextImage}'), auto`,
           }}
@@ -62,7 +62,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
 
       {/* Slider */}
       <Swiper
-        loop={false}
+        loop={true}
         speed={1000}
         modules={[Navigation]}
         onAfterInit={(swiper) => {
@@ -75,12 +75,18 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
         slidesPerView={1}
         className="h-full"
       >
-        {gallery.map(({ image }) => (
+        {gallery.map(({ image }, index) => (
           <SwiperSlide
             className="h-full"
             key={image.src}
             data-preview-image={image.previewSrc}
           >
+            {/* Indicator */}
+            <p className="absolute left-15 bottom-15 md:left-40 md:right-40 text-23 md:text-40 z-10 text-light">
+              {index.toString().padStart(2, "0")}
+            </p>
+
+            {/* Image */}
             <div className="h-full w-full xl:w-1/2 relative">
               <Image
                 quality={85}
