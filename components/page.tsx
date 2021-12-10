@@ -105,7 +105,7 @@ const Page: React.FC<PageProps> = ({
                     position="top"
                     visible={topSentinelInView}
                     mobileHidden={true}
-                    dimensions="h-60 -mb-60"
+                    dimensions="xl:h-90 xl:-mb-90"
                   />
 
                   {/* Content */}
@@ -125,7 +125,7 @@ const Page: React.FC<PageProps> = ({
                     position="bottom"
                     visible={bottomSentinelInView}
                     mobileHidden={true}
-                    dimensions="h-60 -mt-60"
+                    dimensions="xl:h-90 xl:-mt-90"
                   />
                   <Sentinel position="bottom" ref={bottomSentinelRef} />
                 </div>
