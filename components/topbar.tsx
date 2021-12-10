@@ -57,35 +57,33 @@ const Topbar: React.FC<TopbarProps> = () => {
       leaveFrom="transform opacity-100"
       leaveTo="transform opacity-0"
     >
-      <header className="fixed top-0 inset-x-0 z-30">
-        <Container classNameInner="!max-w-none">
-          <div className="relative">
-            <div
-              className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-center gap-x-15 md:gap-x-20 2xl:gap-x-30"
-              style={{ paddingRight: scrollLock }}
-            >
-              {/* Cart */}
-              {!!totalItemsCount && (
-                <button
-                  onClick={openCartButtonHandler}
-                  className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.2em] focus:outline-none focus-visible:outline-black"
-                >
-                  Warenkorb ({totalItemsCount})
-                </button>
-              )}
+      <header className="fixed top-0 inset-x-0 z-30 px-15 md:px-20 2xl:px-30">
+        <div className="relative">
+          <div
+            className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-center gap-x-15 md:gap-x-20 2xl:gap-x-30"
+            style={{ paddingRight: scrollLock }}
+          >
+            {/* Cart */}
+            {!!totalItemsCount && (
+              <button
+                onClick={openCartButtonHandler}
+                className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.2em] focus:outline-none focus-visible:outline-black"
+              >
+                Warenkorb ({totalItemsCount})
+              </button>
+            )}
 
-              {/* Menu toggler */}
-              <Dot
-                text="Menü öffnen"
-                theme="dark"
-                onClick={menuOpenerButtonHandler}
-                onMouseEnter={menuOpenerBoopTrigger}
-                animate={menuOpenerBoopAnimation}
-                transition={menuOpenerBoopTransition}
-              />
-            </div>
+            {/* Menu toggler */}
+            <Dot
+              text="Menü öffnen"
+              theme="dark"
+              onClick={menuOpenerButtonHandler}
+              onMouseEnter={menuOpenerBoopTrigger}
+              animate={menuOpenerBoopAnimation}
+              transition={menuOpenerBoopTransition}
+            />
           </div>
-        </Container>
+        </div>
       </header>
     </Transition>
   );

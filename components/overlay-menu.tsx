@@ -42,20 +42,18 @@ const OverlayMenu: React.FC<OverlayMenuProps> = () => {
 
         {/* Closer */}
         <div className="absolute inset-0" style={{ paddingRight: scrollLock }}>
-          <Container classNameInner="!max-w-none">
-            <div className="relative z-20">
-              <div className="absolute top-15 right-0 md:top-20 2xl:top-30">
-                <Dot
-                  text="Menü schließen"
-                  theme="dark"
-                  onClick={closeHandler}
-                  onMouseEnter={menuOpenerBoopTrigger}
-                  animate={menuOpenerBoopAnimation}
-                  transition={menuOpenerBoopTransition}
-                />
-              </div>
+          <div className="relative z-20">
+            <div className="absolute top-15 right-15 md:top-20 md:right-20 2xl:top-30 2xl:right-30">
+              <Dot
+                text="Menü schließen"
+                theme="dark"
+                onClick={closeHandler}
+                onMouseEnter={menuOpenerBoopTrigger}
+                animate={menuOpenerBoopAnimation}
+                transition={menuOpenerBoopTransition}
+              />
             </div>
-          </Container>
+          </div>
         </div>
 
         <div className="absolute inset-0">
