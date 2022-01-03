@@ -13,7 +13,7 @@ module.exports = {
       bold: 700,
     },
     colors: {
-      light: "#FFF6A7",
+      light: "#fff6b1",
       dark: "#000",
       transparent: "transparent",
       current: "currentColor",
