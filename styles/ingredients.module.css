@@ -15,7 +15,15 @@
     }
 
     & td {
+      @apply align-top;
+    }
+
+    & td + td {
       @apply align-bottom;
+    }
+
+    & td span {
+      font-size: 70%;
     }
   }
 }
