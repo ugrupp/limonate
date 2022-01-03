@@ -23,6 +23,7 @@ const Zahlung: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
 
       <Page
+        hideMobileColGap={true}
         col1Content={
           <>
             <h1 className="sr-only">{data.title}</h1>

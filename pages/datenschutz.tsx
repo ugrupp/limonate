@@ -23,6 +23,7 @@ const Privacy: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </Head>
 
       <Page
+        hideMobileColGap={true}
         col1Content={
           <>
             <h1 className="text-16 md:text-20 2xl:text-25 leading-tight uppercase mb-[1.25em]">

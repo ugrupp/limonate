@@ -10,12 +10,14 @@ import { Gradient, Sentinel } from "./scroll-gradient";
 interface PageProps {
   col1Content: ReactNode;
   col2Content: ReactNode;
+  hideMobileColGap?: boolean;
   pageScroll?: boolean;
 }
 
 const Page: React.FC<PageProps> = ({
   col1Content,
   col2Content,
+  hideMobileColGap = false,
   pageScroll = true,
 }) => {
   // Set up sentinels
@@ -62,9 +64,10 @@ const Page: React.FC<PageProps> = ({
       <Container classNameInner="!max-w-none">
         <div
           className={classNames([
-            "grid xl:grid-cols-2 gap-y-60 md:gap-y-90 gap-x-40 2xl:gap-x-60",
+            "grid xl:grid-cols-2 gap-x-40 2xl:gap-x-60",
             {
               "pt-15 md:pt-40 xl:pt-60 2xl:pt-90 xl:h-screen": true,
+              "gap-y-60 md:gap-y-90": !hideMobileColGap,
             },
           ])}
         >
