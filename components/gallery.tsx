@@ -82,7 +82,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
             data-preview-image={image.previewSrc}
           >
             {/* Indicator */}
-            <p className="absolute left-15 bottom-15 md:left-40 md:right-40 text-23 md:text-40 z-10 text-light xl:hidden">
+            <p className="absolute left-15 bottom-10 md:left-40 md:bottom-30 text-23 leading-none md:text-40 z-10 text-light xl:hidden">
               {(index + 1).toString().padStart(2, "0")}
             </p>
 
