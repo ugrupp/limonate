@@ -83,7 +83,7 @@ const Gallery: React.FC<GalleryProps> = ({ gallery }) => {
           >
             {/* Indicator */}
             <p className="absolute left-15 bottom-15 md:left-40 md:right-40 text-23 md:text-40 z-10 text-light">
-              {index.toString().padStart(2, "0")}
+              {(index + 1).toString().padStart(2, "0")}
             </p>
 
             {/* Image */}
