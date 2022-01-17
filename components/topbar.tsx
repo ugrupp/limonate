@@ -58,16 +58,20 @@ const Topbar: React.FC<TopbarProps> = () => {
       leaveTo="transform opacity-0"
     >
       <header className="fixed top-0 inset-x-0 z-30 px-15 md:px-20 2xl:px-30">
+        {/* Mobile Bg */}
+        <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-light via-light xl:bg-none h-60"></div>
+
+        {/* Content */}
         <div className="relative">
           <div
-            className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end items-center gap-x-15 md:gap-x-20 2xl:gap-x-30"
+            className="absolute top-0 right-0 py-15 md:py-20 2xl:py-30 flex justify-end gap-x-15 md:gap-x-20 2xl:gap-x-30"
             style={{ paddingRight: scrollLock }}
           >
             {/* Cart */}
             {!!totalItemsCount && (
               <button
                 onClick={openCartButtonHandler}
-                className="text-16 md:text-20 2xl:text-25 leading-tight uppercase translate-y-[0.2em] focus:outline-none focus-visible:outline-black"
+                className="text-16 md:text-20 2xl:text-25 leading-tight uppercase md:translate-y-[0.05em] 2xl:translate-y-[0.14em] focus:outline-none focus-visible:outline-black"
               >
                 Warenkorb ({totalItemsCount})
               </button>
