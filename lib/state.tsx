@@ -18,21 +18,43 @@ export const cartOpenState = atom<boolean>({
 export const fetchCartState = selector({
   key: "fetchCartState",
   get: async () => {
-    const lsCheckoutId =
+    let lsCheckoutId = null;
+    const lsCheckoutItem =
       typeof window === "undefined" ? null : localStorage.getItem("checkoutId");
 
     let newCart: Cart;
     let newCheckoutId: string;
 
     // Fetch or create the checkout object
-    if (lsCheckoutId) {
-      newCart = await client.checkout.fetch(lsCheckoutId);
-      newCheckoutId = newCart.id as string;
-    } else {
+    try {
+      if (!!lsCheckoutItem) {
+        const { id, timestamp } = JSON.parse(lsCheckoutItem);
+        // 1 week = cart expiry
+        const now = new Date().getTime();
+        if (now - parseInt(timestamp) <= 1000 * 60 * 60 * 24 * 7) {
+          lsCheckoutId = id;
+        }
+      }
+
+      if (!!lsCheckoutId) {
+        newCart = await client.checkout.fetch(lsCheckoutId);
+      } else {
+        newCart = await client.checkout.create();
+      }
+    } catch (e) {
+      console.error(e);
       newCart = await client.checkout.create();
-      newCheckoutId = newCart.id as string;
-      localStorage.setItem("checkoutId", newCheckoutId);
     }
+
+    newCheckoutId = newCart?.id as string;
+    !!newCheckoutId &&
+      localStorage.setItem(
+        "checkoutId",
+        JSON.stringify({
+          id: newCheckoutId,
+          timestamp: new Date().getTime(),
+        })
+      );
 
     return newCart;
   },
